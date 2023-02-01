@@ -15,32 +15,32 @@ CSV файл должен быть упорядочен по убыванию ч
 + Использовать класс `java.lang.StringBuilder` для построения слов.
 + Для чтения из файла удобно использовать `java.io.InputStreamReader`, например:
 
-
-    Reader reader = null;
-    try
+```java
+Reader reader = null;
+try
+{
+    reader = new InputStreamReader(new FileInputStream("FILE NAME"));
+    // read the data here
+}
+catch (IOException e)
+{
+    System.err.println("Error while reading file: " + e.getLocalizedMessage());
+}
+finally
+{
+    if (null != reader)
     {
-        reader = new InputStreamReader(new FileInputStream(&quot;FILE NAME&quot;));
-        // read the data here
-    }
-    catch (IOException e)
-    {
-        System.err.println("Error while reading file: " + e.getLocalizedMessage());
-    }
-    finally
-    {
-        if (null != reader)
+        try
         {
-            try
-            {
-                reader.close();
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace(System.err);
-            }
+            reader.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace(System.err);
         }
     }
-
+}
+```
 
 + Для определения класса символа использовать метод `Character.isLetterOrDigit`. 
 + Для хранения статистики в памяти можно использовать одну из реализаций интерфейса
