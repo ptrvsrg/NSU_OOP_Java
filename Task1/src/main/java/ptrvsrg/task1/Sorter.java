@@ -1,3 +1,5 @@
+package ptrvsrg.task1;
+
 import java.util.Comparator;
 import java.util.Map;
 import java.util.SortedSet;

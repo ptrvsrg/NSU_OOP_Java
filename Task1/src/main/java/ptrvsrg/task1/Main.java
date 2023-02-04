@@ -1,3 +1,5 @@
+package ptrvsrg.task1;
+
 import org.apache.commons.cli.ParseException;
 
 import java.io.*;
