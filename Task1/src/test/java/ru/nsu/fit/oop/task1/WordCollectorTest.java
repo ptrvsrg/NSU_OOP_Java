@@ -1,4 +1,4 @@
-package ptrvsrg.task1;
+package ru.nsu.fit.oop.task1;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
