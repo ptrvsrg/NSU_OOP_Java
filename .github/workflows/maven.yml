@@ -30,7 +30,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file "./${{ matrix.tasks }}/pom.xml"
-
-    - name: Test with Maven
-      run: mvn test --file "./${{ matrix.tasks }}/pom.xml"
+      run: mvn -q -B --file "./${{ matrix.tasks }}/pom.xml" clean test
