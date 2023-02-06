@@ -12,7 +12,10 @@ public class Main
     {
         try
         {
-            ClParser clParser = new ClParser(args);
+            ClParser clParser = new ClParser();
+            if (!clParser.parse(args))
+                return;
+
             String inputFile = (String) clParser.getInput();
             String outputFile = (String) clParser.getOutput();
 
@@ -21,8 +24,7 @@ public class Main
             {
                 WordCollector wordCollector = new WordCollector(inputStreamReader);
                 Map <String, Long> histogram = wordCollector.getHistogram();
-                SortedSet <Map.Entry <String, Long>> sortedSet = Sorter.mapSortingByValue(histogram,
-                                                                                          Sorter.SortingType.DESCENDING);
+                SortedSet <Map.Entry <String, Long>> sortedSet = Sorter.mapSortingByValue(histogram);
                 CsvBuilder csvBuilder = new CsvBuilder(outputStreamWriter);
                 csvBuilder.build(sortedSet,
                                  wordCollector.getWordCount());
