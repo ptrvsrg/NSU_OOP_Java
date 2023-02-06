@@ -22,6 +22,15 @@ public class WordCollector
         return wordCount;
     }
 
+    private void addHistogram(HashMap <String, Long> histogram,
+                              StringBuilder word)
+    {
+        histogram.compute(new String(word).toLowerCase(),
+                          (key, value) -> (value == null) ? 1 : value + 1);
+        word.setLength(0);
+        ++wordCount;
+    }
+
     public HashMap <String, Long> getHistogram()
             throws IOException
     {
@@ -44,14 +53,5 @@ public class WordCollector
 
         hasHistogram = true;
         return histogram;
-    }
-
-    private void addHistogram(HashMap <String, Long> histogram,
-                              StringBuilder word)
-    {
-        histogram.compute(new String(word).toLowerCase(),
-                          (key, value) -> (value == null) ? 1 : value + 1);
-        word.setLength(0);
-        ++wordCount;
     }
 }
