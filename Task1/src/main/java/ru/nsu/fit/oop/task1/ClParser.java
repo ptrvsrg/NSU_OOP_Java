@@ -6,7 +6,7 @@ public class ClParser
 {
     private CommandLine commandLine;
 
-    public ClParser(String[] args)
+    public boolean parse(String[] args)
             throws ParseException
     {
         Options opts = new Options();
@@ -42,20 +42,19 @@ public class ClParser
                              .required()
                              .build());
 
-        if (commandLine.hasOption("help"))
+        if (args.length == 0 ||
+            commandLine.hasOption("help"))
         {
             HelpFormatter helpFormatter = new HelpFormatter();
             helpFormatter.printHelp("app",
-                                    "Available command:",
                                     opts,
-                                    "",
                                     true);
-            if (commandLine.getOptions().length == 1)
-                return;
+            return false;
         }
 
         commandLine = clParser.parse(opts,
                                      args);
+        return true;
     }
 
     public Object getInput()
