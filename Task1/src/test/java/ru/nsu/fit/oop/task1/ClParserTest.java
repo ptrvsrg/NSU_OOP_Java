@@ -44,7 +44,8 @@ class ClParserTest
     {
         try
         {
-            ClParser clParser = new ClParser(args);
+            ClParser clParser = new ClParser();
+            clParser.parse(args);
             Assertions.assertEquals(clParser.getInput(),
                                     expectedInput,
                                     "Incorrect input file");
@@ -62,9 +63,20 @@ class ClParserTest
     @Test
     void printHelp()
     {
+        ClParser clParser = new ClParser();
         Assertions.assertDoesNotThrow(() ->
-                                      {new ClParser(new String[]{"--help"});});
+                                      {
+                                          clParser.parse(new String[]{});
+                                      });
         Assertions.assertDoesNotThrow(() ->
-                                      {new ClParser(new String[]{"--help", "--mode", "dark"});});
+                                      {
+                                          clParser.parse(new String[]{ "--help" });
+                                      });
+        Assertions.assertDoesNotThrow(() ->
+                                      {
+                                          clParser.parse(new String[]{ "--help",
+                                                                       "--mode",
+                                                                       "dark"});
+                                      });
     }
 }
