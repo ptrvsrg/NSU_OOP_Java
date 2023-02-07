@@ -42,12 +42,12 @@ public class WordCollector
         {
             if (Character.isLetterOrDigit(symCode))
                 word.append((char) symCode);
-            else if (!word.isEmpty())
+            else if (word.length() != 0)
                 addHistogram(histogram,
                              word);
         }
 
-        if (!word.isEmpty())
+        if (word.length() != 0)
             addHistogram(histogram,
                          word);
 
