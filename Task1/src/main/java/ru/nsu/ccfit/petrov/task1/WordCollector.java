@@ -1,4 +1,4 @@
-package ru.nsu.fit.oop.task1;
+package ru.nsu.ccfit.petrov.task1;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

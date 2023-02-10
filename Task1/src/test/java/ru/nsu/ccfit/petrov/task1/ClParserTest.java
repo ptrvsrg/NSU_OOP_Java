@@ -1,4 +1,4 @@
-package ru.nsu.fit.oop.task1;
+package ru.nsu.ccfit.petrov.task1;
 
 import org.apache.commons.cli.ParseException;
 import org.junit.jupiter.api.Assertions;

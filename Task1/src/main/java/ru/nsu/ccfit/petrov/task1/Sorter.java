@@ -1,4 +1,4 @@
-package ru.nsu.fit.oop.task1;
+package ru.nsu.ccfit.petrov.task1;
 
 import java.util.Comparator;
 import java.util.Map;
