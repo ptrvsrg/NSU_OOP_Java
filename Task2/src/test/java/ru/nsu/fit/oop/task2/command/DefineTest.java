@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
-import ru.nsu.fit.oop.task2.command.exception.ArgumentsTypeException;
+import ru.nsu.fit.oop.task2.command.exception.ArgumentsFormatException;
 import ru.nsu.fit.oop.task2.command.exception.VariableNameException;
 
 import java.util.ArrayList;
@@ -28,7 +28,13 @@ class DefineTest
                 Arguments.of(new ArrayList<>(List.of("a_1", "1.57")),
                              new HashMap<>(Map.of("a_1", 1.57))),
                 Arguments.of(new ArrayList<>(List.of("a", "1")),
-                             new HashMap<>(Map.of("a", 1.0)))
+                             new HashMap<>(Map.of("a", 1.0))),
+                Arguments.of(new ArrayList<>(List.of("a", "-1.57")),
+                             new HashMap<>(Map.of("a", -1.57))),
+                Arguments.of(new ArrayList<>(List.of("a", "3.5E-01")),
+                             new HashMap<>(Map.of("a", 0.35))),
+                Arguments.of(new ArrayList<>(List.of("a", ".5")),
+                             new HashMap<>(Map.of("a", 0.5)))
         );
     }
 
@@ -61,11 +67,11 @@ class DefineTest
                 Arguments.of(new ArrayList<>(List.of("a/b/c", "1.986")),
                              VariableNameException.class),
                 Arguments.of(new ArrayList<>(List.of("a", "b")),
-                             ArgumentsTypeException.class),
+                             ArgumentsFormatException.class),
                 Arguments.of(new ArrayList<>(List.of("a", "true")),
-                             ArgumentsTypeException.class),
+                             ArgumentsFormatException.class),
                 Arguments.of(new ArrayList<>(List.of("a", "1.2az")),
-                             ArgumentsTypeException.class)
+                             ArgumentsFormatException.class)
         );
     }
 

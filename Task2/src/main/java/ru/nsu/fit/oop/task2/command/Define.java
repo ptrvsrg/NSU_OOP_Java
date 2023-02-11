@@ -3,7 +3,7 @@ package ru.nsu.fit.oop.task2.command;
 import ru.nsu.fit.oop.task2.Command;
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
-import ru.nsu.fit.oop.task2.command.exception.ArgumentsTypeException;
+import ru.nsu.fit.oop.task2.command.exception.ArgumentsFormatException;
 import ru.nsu.fit.oop.task2.command.exception.VariableNameException;
 import ru.nsu.fit.oop.task2.util.Variable;
 
@@ -33,7 +33,7 @@ public class Define
         }
         catch (NumberFormatException ex)
         {
-            throw new ArgumentsTypeException();
+            throw new ArgumentsFormatException();
         }
     }
 
