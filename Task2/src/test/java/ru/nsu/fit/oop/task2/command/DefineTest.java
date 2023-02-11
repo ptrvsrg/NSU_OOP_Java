@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsFormatException;
@@ -79,6 +80,7 @@ class DefineTest
     @MethodSource("throwTestArgs")
     void throwTest(ArrayList<String> args, Class<? extends Throwable> exceptionClass)
     {
-        Assertions.assertThrows(exceptionClass, () -> defineCmd.setArgs(args));
+        Assertions.assertThrows(exceptionClass,
+                                () -> defineCmd.setArgs(args));
     }
 }
