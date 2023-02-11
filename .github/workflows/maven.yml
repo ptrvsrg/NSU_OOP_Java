@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tasks: [ "Task1" ]
+        tasks: [ "Task1", "Task2" ]
 
     steps:
     - uses: actions/checkout@v3
