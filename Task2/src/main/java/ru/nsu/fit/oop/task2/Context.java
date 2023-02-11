@@ -1,5 +1,6 @@
 package ru.nsu.fit.oop.task2;
 
+import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -33,7 +34,14 @@ public class Context
 
     public Double popCalculatingValue()
     {
-        return calculatingValues.pop();
+        try
+        {
+            return calculatingValues.pop();
+        }
+        catch (EmptyStackException ex)
+        {
+            return null;
+        }
     }
 
     public void addVariable(String name, Double value)
