@@ -1,11 +1,9 @@
 package ru.nsu.fit.oop.task2.command;
 
-import ru.nsu.fit.oop.task2.Command;
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
 import ru.nsu.fit.oop.task2.command.exception.EnoughStackValuesException;
 
-import java.io.IOException;
 import java.util.List;
 
 public class Addition
@@ -20,7 +18,6 @@ public class Addition
 
     @Override
     public void run(Context context)
-            throws IOException
     {
         Double addend2 = context.popCalculatingValue();
         Double addend1 = context.popCalculatingValue();

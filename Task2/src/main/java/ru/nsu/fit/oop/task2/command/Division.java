@@ -1,12 +1,10 @@
 package ru.nsu.fit.oop.task2.command;
 
-import ru.nsu.fit.oop.task2.Command;
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
 import ru.nsu.fit.oop.task2.command.exception.DivisionByZeroException;
 import ru.nsu.fit.oop.task2.command.exception.EnoughStackValuesException;
 
-import java.io.IOException;
 import java.util.List;
 
 public class Division
@@ -21,7 +19,6 @@ public class Division
 
     @Override
     public void run(Context context)
-            throws IOException
     {
         Double divisor = context.popCalculatingValue();
         Double dividend = context.popCalculatingValue();

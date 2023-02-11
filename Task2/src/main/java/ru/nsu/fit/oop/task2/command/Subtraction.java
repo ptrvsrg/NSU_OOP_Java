@@ -1,11 +1,9 @@
 package ru.nsu.fit.oop.task2.command;
 
-import ru.nsu.fit.oop.task2.Command;
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
 import ru.nsu.fit.oop.task2.command.exception.EnoughStackValuesException;
 
-import java.io.IOException;
 import java.util.List;
 
 public class Subtraction
@@ -20,7 +18,6 @@ public class Subtraction
 
     @Override
     public void run(Context context)
-            throws IOException
     {
         Double subtrahend = context.popCalculatingValue();
         Double minuend = context.popCalculatingValue();

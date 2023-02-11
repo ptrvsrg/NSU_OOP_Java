@@ -1,6 +1,5 @@
 package ru.nsu.fit.oop.task2.command;
 
-import ru.nsu.fit.oop.task2.Command;
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
 

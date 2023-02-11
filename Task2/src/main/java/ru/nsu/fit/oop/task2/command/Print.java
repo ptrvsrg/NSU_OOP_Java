@@ -1,6 +1,5 @@
 package ru.nsu.fit.oop.task2.command;
 
-import ru.nsu.fit.oop.task2.Command;
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
 
@@ -19,10 +18,16 @@ public class Print
 
     @Override
     public void run(Context context)
-            throws IOException
     {
         Double value = context.peekCalculatingValue();
         if (value != null)
-            context.getOut().write(value.toString().getBytes());
+            try
+            {
+                context.getOut().write(value.toString().getBytes());
+            }
+            catch (IOException ex)
+            {
+                throw new RuntimeException(ex);
+            }
     }
 }

@@ -1,12 +1,10 @@
 package ru.nsu.fit.oop.task2.command;
 
-import ru.nsu.fit.oop.task2.Command;
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
 import ru.nsu.fit.oop.task2.command.exception.EnoughStackValuesException;
 import ru.nsu.fit.oop.task2.command.exception.NegativeNumberException;
 
-import java.io.IOException;
 import java.util.List;
 
 public class SquareRoot
@@ -21,7 +19,6 @@ public class SquareRoot
 
     @Override
     public void run(Context context)
-            throws IOException
     {
         Double num = context.popCalculatingValue();
 
