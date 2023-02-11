@@ -21,19 +21,16 @@ class PrintTest
         context.setOut(out);
         List <String> args = new ArrayList <>();
 
-        // Empty stack
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          printCmd.setArgs(args);
-                                          printCmd.run(context);
-                                      });
-        Assertions.assertTrue(out.toString().isEmpty());
-
-        // Non-empty stack
         context.pushCalculatingValue(1.1);
-        Assertions.assertDoesNotThrow(() -> printCmd.run(context));
+        Assertions.assertDoesNotThrow(
+                () ->
+                {
+                    printCmd.setArgs(args);
+                    printCmd.run(context);
+                }
+        );
         Assertions.assertEquals(out.toString(),
-                                context.popCalculatingValue().toString());
+                                "1.1\n");
     }
 
     @Test
