@@ -19,6 +19,18 @@ public class Context
         calculatingValues.push(value);
     }
 
+    public Double peekCalculatingValue()
+    {
+        try
+        {
+            return calculatingValues.peek();
+        }
+        catch (EmptyStackException ex)
+        {
+            return null;
+        }
+    }
+
     public Double popCalculatingValue()
     {
         return calculatingValues.pop();
