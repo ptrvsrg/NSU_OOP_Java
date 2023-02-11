@@ -4,7 +4,6 @@ import ru.nsu.fit.oop.task2.Command;
 import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
 
-import java.util.EmptyStackException;
 import java.util.List;
 
 public class Pop
@@ -20,10 +19,6 @@ public class Pop
     @Override
     public void run(Context context)
     {
-        try
-        {
-            context.popCalculatingValue();
-        }
-        catch (EmptyStackException ignored) {}
+        context.popCalculatingValue();
     }
 }
