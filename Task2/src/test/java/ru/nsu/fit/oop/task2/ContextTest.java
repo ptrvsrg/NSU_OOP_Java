@@ -32,19 +32,24 @@ class ContextTest
     @MethodSource("testStackArgs")
     void testStack(ArrayList<Double> calculatingValues)
     {
-        Assertions.assertThrows(EmptyStackException.class,
-                                context::popCalculatingValue);
+        // Empty stack doesn't throw an exception
+        Assertions.assertDoesNotThrow(context::popCalculatingValue);
 
         for (Double calculatingValue : calculatingValues)
             context.pushCalculatingValue(calculatingValue);
 
         Collections.reverse(calculatingValues);
         for (Double expected : calculatingValues)
+        {
+            Assertions.assertEquals(expected,
+                                    context.peekCalculatingValue());
             Assertions.assertEquals(expected,
                                     context.popCalculatingValue());
+        }
 
-        Assertions.assertThrows(EmptyStackException.class,
-                                context::popCalculatingValue);
+        // Empty stack return null
+        Assertions.assertNull(context.peekCalculatingValue());
+        Assertions.assertNull(context.popCalculatingValue());
     }
 
     @ParameterizedTest
