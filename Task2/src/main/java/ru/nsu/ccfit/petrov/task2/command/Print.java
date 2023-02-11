@@ -3,7 +3,7 @@ package ru.nsu.ccfit.petrov.task2.command;
 import ru.nsu.ccfit.petrov.task2.Context;
 import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsNumberException;
 
-import java.io.IOException;
+import java.io.PrintStream;
 import java.util.List;
 
 public class Print
@@ -20,14 +20,7 @@ public class Print
     public void run(Context context)
     {
         Double value = context.peekCalculatingValue();
-        if (value != null)
-            try
-            {
-                context.getOut().write(value.toString().getBytes());
-            }
-            catch (IOException ex)
-            {
-                throw new RuntimeException(ex);
-            }
+        PrintStream out = new PrintStream(context.getOut());
+        out.println((value != null) ? value : "");
     }
 }
