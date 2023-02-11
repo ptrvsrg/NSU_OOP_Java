@@ -20,14 +20,6 @@ class ContextTest
         );
     }
 
-    private static Stream <Arguments> testMapArgs()
-    {
-        return Stream.of(
-                Arguments.of(new HashMap<>()),
-                Arguments.of(new HashMap <>(Map.of("a", 1.1, "b", 2.2, "c", 3.3)))
-        );
-    }
-
     @ParameterizedTest
     @MethodSource("testStackArgs")
     void testStack(ArrayList<Double> calculatingValues)
@@ -50,6 +42,14 @@ class ContextTest
         // Empty stack return null
         Assertions.assertNull(context.peekCalculatingValue());
         Assertions.assertNull(context.popCalculatingValue());
+    }
+
+    private static Stream <Arguments> testMapArgs()
+    {
+        return Stream.of(
+                Arguments.of(new HashMap<>()),
+                Arguments.of(new HashMap <>(Map.of("a", 1.1, "b", 2.2, "c", 3.3)))
+        );
     }
 
     @ParameterizedTest

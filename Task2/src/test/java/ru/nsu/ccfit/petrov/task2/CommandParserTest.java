@@ -18,6 +18,7 @@ class CommandParserTest
                 Arguments.of("  ", null, new ArrayList<String>()),
                 Arguments.of("#PRINT", null, new ArrayList<String>()),
                 Arguments.of("PRINT", "PRINT", new ArrayList<String>()),
+                Arguments.of("PRINT #PRINT", "PRINT", new ArrayList<String>()),
                 Arguments.of("PUSH a", "PUSH", List.of("a")),
                 Arguments.of("DEFINE a 4", "DEFINE", List.of("a", "4")),
                 Arguments.of("DEFINE a 4 #b 5", "DEFINE", List.of("a", "4"))

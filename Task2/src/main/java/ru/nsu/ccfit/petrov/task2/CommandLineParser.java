@@ -9,6 +9,7 @@ public class CommandLineParser
     public boolean parse(String[] args)
             throws ParseException
     {
+        // Add available options
         Options opts = new Options();
         opts.addOption(Option.builder()
                              .option("h")
@@ -33,10 +34,14 @@ public class CommandLineParser
                              .type(String.class)
                              .build());
 
+        // Create default command parser
         org.apache.commons.cli.CommandLineParser clParser = new DefaultParser();
+
+        // Parse args
         commandLine = clParser.parse(opts,
                                      args);
 
+        // Print help
         if (commandLine.hasOption("help"))
         {
             HelpFormatter helpFormatter = new HelpFormatter();

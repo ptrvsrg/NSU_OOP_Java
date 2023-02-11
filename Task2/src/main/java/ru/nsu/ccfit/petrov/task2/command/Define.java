@@ -22,10 +22,12 @@ public class Define
         if (args.size() != 2)
             throw new ArgumentsNumberException();
 
+        // Get correct variable name
         if (!Variable.isCorrectVariableName(args.get(0)))
             throw new VariableNameException();
         name = args.get(0);
 
+        // Get correct variable value
         try
         {
             value = Double.valueOf(args.get(1));

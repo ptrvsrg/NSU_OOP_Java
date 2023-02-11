@@ -18,6 +18,7 @@ public class Push
         if (args.size() != 1)
             throw new ArgumentsNumberException();
 
+        // Get variable name or number value
         value = args.get(0);
     }
 
