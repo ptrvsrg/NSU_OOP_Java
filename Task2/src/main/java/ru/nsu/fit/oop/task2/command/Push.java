@@ -25,16 +25,16 @@ public class Push
     @Override
     public void run(Context context)
     {
-        if (Variable.isCorrectVariableName(value))
-            context.pushCalculatingValue(context.getVariable(value));
-        else
-            try
-            {
+        try
+        {
+            if (Variable.isCorrectVariableName(value))
+                context.pushCalculatingValue(context.getVariable(value));
+            else
                 context.pushCalculatingValue(Double.valueOf(value));
-            }
-            catch (NumberFormatException ex)
-            {
-                throw new ArgumentsFormatException();
-            }
+        }
+        catch (NumberFormatException ex)
+        {
+            throw new ArgumentsFormatException();
+        }
     }
 }
