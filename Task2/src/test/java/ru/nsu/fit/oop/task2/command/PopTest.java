@@ -7,7 +7,6 @@ import ru.nsu.fit.oop.task2.Context;
 import ru.nsu.fit.oop.task2.command.exception.ArgumentsNumberException;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 import java.util.List;
 
 class PopTest
@@ -33,8 +32,7 @@ class PopTest
 
         // Empty stack
         Assertions.assertDoesNotThrow(() -> popCmd.run(context));
-        Assertions.assertThrows(EmptyStackException.class,
-                                context::popCalculatingValue);
+        Assertions.assertNull(context.popCalculatingValue());
     }
 
     @Test
