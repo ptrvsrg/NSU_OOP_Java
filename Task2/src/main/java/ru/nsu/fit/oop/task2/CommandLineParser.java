@@ -2,7 +2,7 @@ package ru.nsu.fit.oop.task2;
 
 import org.apache.commons.cli.*;
 
-public class ClParser
+public class CommandLineParser
 {
     private CommandLine commandLine;
 
@@ -33,7 +33,7 @@ public class ClParser
                              .type(String.class)
                              .build());
 
-        CommandLineParser clParser = new DefaultParser();
+        org.apache.commons.cli.CommandLineParser clParser = new DefaultParser();
         commandLine = clParser.parse(opts,
                                      args);
 

@@ -15,7 +15,7 @@ class PopTest
     private final Pop popCmd = new Pop();
 
     @Test
-    void doesNotThrowTest()
+    void popTest()
     {
         context.pushCalculatingValue(1.1);
         context.pushCalculatingValue(2.2);
@@ -36,7 +36,7 @@ class PopTest
     }
 
     @Test
-    void throwTest()
+    void exceptionTest()
     {
         List<String> args = new ArrayList<>(List.of("a"));
         Assertions.assertThrows(ArgumentsNumberException.class,

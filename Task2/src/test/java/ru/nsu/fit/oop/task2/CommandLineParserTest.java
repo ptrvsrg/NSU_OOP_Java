@@ -9,9 +9,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-class ClParserTest
+class CommandLineParserTest
 {
-    private final ClParser clParser = new ClParser();
+    private final CommandLineParser commandLineParser = new CommandLineParser();
 
     private static Stream <Arguments> checkInputOutputArgs()
     {
@@ -45,10 +45,10 @@ class ClParserTest
         Assertions.assertDoesNotThrow(
                 () ->
                 {
-                    Assertions.assertTrue(clParser.parse(args));
-                    Assertions.assertEquals(clParser.getInput(),
+                    Assertions.assertTrue(commandLineParser.parse(args));
+                    Assertions.assertEquals(commandLineParser.getInput(),
                                             expectedInput);
-                    Assertions.assertEquals(clParser.getOutput(),
+                    Assertions.assertEquals(commandLineParser.getOutput(),
                                             expectedOutput);
                 }
         );
@@ -65,7 +65,7 @@ class ClParserTest
     @MethodSource("checkHelpArgs")
     void checkHelp(String[] args)
     {
-        Assertions.assertDoesNotThrow( () -> Assertions.assertFalse(clParser.parse(args)) );
+        Assertions.assertDoesNotThrow( () -> Assertions.assertFalse(commandLineParser.parse(args)) );
     }
 
     private static Stream <Arguments> checkExceptionArgs()
@@ -81,6 +81,6 @@ class ClParserTest
     @MethodSource("checkExceptionArgs")
     void checkException(String[] args, Class<? extends Throwable> exception)
     {
-        Assertions.assertThrows(exception, () -> Assertions.assertFalse(clParser.parse(args)));
+        Assertions.assertThrows(exception, () -> Assertions.assertFalse(commandLineParser.parse(args)));
     }
 }

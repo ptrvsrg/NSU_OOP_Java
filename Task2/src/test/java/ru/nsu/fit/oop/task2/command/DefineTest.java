@@ -21,7 +21,7 @@ class DefineTest
     private final Context context = new Context();
     private final Define defineCmd = new Define();
 
-    private static Stream<Arguments> doesNotThrowTestArgs()
+    private static Stream<Arguments> defineTestArgs()
     {
         return Stream.of(
                 Arguments.of(new ArrayList<>(List.of("a", "1.57")),
@@ -40,8 +40,8 @@ class DefineTest
     }
 
     @ParameterizedTest
-    @MethodSource("doesNotThrowTestArgs")
-    void doesNotThrowTest(ArrayList<String> args, HashMap<String, Double> variables)
+    @MethodSource("defineTestArgs")
+    void defineTest(ArrayList<String> args, HashMap<String, Double> variables)
     {
         Assertions.assertDoesNotThrow(() ->
                                       {
@@ -54,7 +54,7 @@ class DefineTest
                                     context.getVariable(expected.getKey()));
     }
 
-    private static Stream<Arguments> throwTestArgs()
+    private static Stream<Arguments> exceptionTestArgs()
     {
         return Stream.of(
                 Arguments.of(new ArrayList<>(),
@@ -77,8 +77,8 @@ class DefineTest
     }
 
     @ParameterizedTest
-    @MethodSource("throwTestArgs")
-    void throwTest(ArrayList<String> args, Class<? extends Throwable> exceptionClass)
+    @MethodSource("exceptionTestArgs")
+    void exceptionTest(ArrayList<String> args, Class<? extends Throwable> exceptionClass)
     {
         Assertions.assertThrows(exceptionClass,
                                 () -> defineCmd.setArgs(args));

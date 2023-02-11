@@ -18,7 +18,7 @@ class PushTest
     private final Context context = new Context();
     private final Push pushCmd = new Push();
 
-    private static Stream <Arguments> doesNotThrowTestArgs()
+    private static Stream <Arguments> pushTestArgs()
     {
         return Stream.of(
                 Arguments.of(new ArrayList <>(List.of("1.57")),
@@ -35,8 +35,8 @@ class PushTest
     }
 
     @ParameterizedTest
-    @MethodSource("doesNotThrowTestArgs")
-    void doesNotThrowTest(ArrayList<String> args, Double expected)
+    @MethodSource("pushTestArgs")
+    void pushTest(ArrayList<String> args, Double expected)
     {
         Assertions.assertDoesNotThrow(() ->
                                       {
@@ -48,7 +48,7 @@ class PushTest
                                 context.popCalculatingValue());
     }
 
-    private static Stream<Arguments> throwTestArgs()
+    private static Stream<Arguments> exceptionTestArgs()
     {
         return Stream.of(
                 Arguments.of(new ArrayList<>(),
@@ -65,8 +65,8 @@ class PushTest
     }
 
     @ParameterizedTest
-    @MethodSource("throwTestArgs")
-    void throwTest(ArrayList<String> args, Class<? extends Throwable> exceptionClass)
+    @MethodSource("exceptionTestArgs")
+    void exceptionTest(ArrayList<String> args, Class<? extends Throwable> exceptionClass)
     {
         Assertions.assertThrows(exceptionClass,
                                 () ->
