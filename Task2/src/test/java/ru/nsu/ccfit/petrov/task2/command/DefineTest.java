@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 
 class DefineTest
 {
-    private final Context context = new Context();
+    private final Context context = new Context(System.out);
     private final Define defineCmd = new Define();
 
     private static Stream<Arguments> defineTestArgs()

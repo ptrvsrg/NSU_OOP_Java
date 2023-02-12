@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 class SubtractionTest
 {
-    private final Context context = new Context();
+    private final Context context = new Context(System.out);
     private final Subtraction subtractionCmd = new Subtraction();
 
     private static Stream <Arguments> additionTestArgs()

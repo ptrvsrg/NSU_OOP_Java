@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 class ContextTest
 {
-    private final Context context = new Context();
+    private final Context context = new Context(System.out);
 
     private static Stream <Arguments> testStackArgs()
     {

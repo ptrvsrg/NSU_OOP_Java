@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 class MultiplicationTest
 {
-    private final Context context = new Context();
+    private final Context context = new Context(System.out);
     private final Multiplication multiplicationCmd = new Multiplication();
 
     private static Stream <Arguments> multiplicationTestArgs()

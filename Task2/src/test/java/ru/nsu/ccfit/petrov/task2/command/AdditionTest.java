@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 class AdditionTest
 {
-    private final Context context = new Context();
+    private final Context context = new Context(System.out);
     private final Addition additionCmd = new Addition();
 
     private static Stream <Arguments> additionTestArgs()

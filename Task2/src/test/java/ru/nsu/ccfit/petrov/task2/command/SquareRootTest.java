@@ -13,7 +13,7 @@ import java.util.List;
 
 class SquareRootTest
 {
-    private final Context context = new Context();
+    private final Context context = new Context(System.out);
     private final SquareRoot squareRootCmd = new SquareRoot();
 
     @Test

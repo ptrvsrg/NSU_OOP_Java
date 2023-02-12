@@ -11,7 +11,7 @@ import java.util.List;
 
 class PopTest
 {
-    private final Context context = new Context();
+    private final Context context = new Context(System.out);
     private final Pop popCmd = new Pop();
 
     @Test

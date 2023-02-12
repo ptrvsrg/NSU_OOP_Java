@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 class PushTest
 {
-    private final Context context = new Context();
+    private final Context context = new Context(System.out);
     private final Push pushCmd = new Push();
 
     private static Stream <Arguments> pushTestArgs()

@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 
 class DivisionTest
 {
-    private final Context context = new Context();
+    private final Context context = new Context(System.out);
     private final Division divisionCmd = new Division();
 
     private static Stream <Arguments> divisionTestArgs()
