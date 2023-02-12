@@ -2,6 +2,7 @@ package ru.nsu.ccfit.petrov.task2.command;
 
 import ru.nsu.ccfit.petrov.task2.Context;
 import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.exception.EnoughStackValuesException;
 
 import java.io.PrintStream;
 import java.util.List;
@@ -21,6 +22,10 @@ public class Print
     {
         Double value = context.peekCalculatingValue();
         PrintStream out = new PrintStream(context.getOut());
-        out.println((value != null) ? value : "");
+
+        if (value != null)
+            out.println(value);
+        else
+            throw new EnoughStackValuesException();
     }
 }
