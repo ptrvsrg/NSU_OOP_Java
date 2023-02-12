@@ -1,11 +1,13 @@
 package ru.nsu.ccfit.petrov.task2;
 
+import org.apache.log4j.Logger;
 import ru.nsu.ccfit.petrov.task2.command.Command;
 
 import java.io.*;
 
 public class Calculator
 {
+    private static final Logger logger = Logger.getRootLogger();
     private final InputStream in;
     private final OutputStream out;
 
@@ -19,41 +21,61 @@ public class Calculator
     void run()
     {
         // Create calculator context
-        Context context = new Context();
-        context.setOut(out);
+        logger.info("Create calculator context");
+        Context context = new Context(out);
 
         // Create parser of lines with commands
+        logger.info("Create parser of lines with commands");
         CommandParser cmdParser = new CommandParser();
 
         // Create command creator
+        logger.info("Create command creator");
         CommandCreator cmdCreator = new CommandCreator();
 
         // Start reading lines with commands from input stream
+        logger.info("Start reading lines with commands from input stream");
         try (BufferedReader buffIn = new BufferedReader(new InputStreamReader(in)))
         {
             String line;
             while ((line = buffIn.readLine()) != null)
             {
-                // Parse line (Extract command name and arguments)
+                // Parse read line (Extract command name and arguments)
+                logger.info("Parse read line");
                 cmdParser.parse(line);
 
-                // Create command
-                Command cmd = cmdCreator.create(cmdParser.getCommandName());
-
-                // Unrecognized command
-                if (cmd == null)
+                // Empty line or comment
+                if (cmdParser.getCommandName() == null)
                     continue;
 
-                // Set command arguments
-                cmd.setArgs(cmdParser.getArgs());
+                // Create command
+                logger.info("Create command \"" + cmdParser.getCommandName() + "\"");
+                Command cmd = cmdCreator.create(cmdParser.getCommandName());
 
-                // Launch command
-                cmd.run(context);
+                // Command is not found
+                if (cmd == null)
+                {
+                    logger.warn("Command \"" + cmdParser.getCommandName() + "\" is not found");
+                    continue;
+                }
+
+                logger.info("Launch command \"" + cmdParser.getCommandName() + "\"");
+                try
+                {
+                    // Set command arguments
+                    cmd.setArgs(cmdParser.getArgs());
+
+                    // Run command
+                    cmd.run(context);
+                }
+                catch (Exception ex)
+                {
+                    logger.warn("", ex);
+                }
             }
         }
         catch (IOException ex)
         {
-            throw new RuntimeException(ex);
+            logger.error("", ex);
         }
     }
 }
