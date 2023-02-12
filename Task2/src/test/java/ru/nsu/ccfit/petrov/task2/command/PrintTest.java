@@ -3,7 +3,7 @@ package ru.nsu.ccfit.petrov.task2.command;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;

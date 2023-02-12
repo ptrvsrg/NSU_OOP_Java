@@ -6,9 +6,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.command.exception.VariableNameException;
-import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsNumberException;
-import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsFormatException;
+import ru.nsu.ccfit.petrov.task2.exception.VariableNameException;
+import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.exception.ArgumentsFormatException;
 
 import java.util.ArrayList;
 import java.util.HashMap;

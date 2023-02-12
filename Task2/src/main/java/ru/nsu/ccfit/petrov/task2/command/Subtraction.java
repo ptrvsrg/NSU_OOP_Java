@@ -1,8 +1,8 @@
 package ru.nsu.ccfit.petrov.task2.command;
 
 import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsNumberException;
-import ru.nsu.ccfit.petrov.task2.command.exception.EnoughStackValuesException;
+import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.exception.EnoughStackValuesException;
 
 import java.util.List;
 

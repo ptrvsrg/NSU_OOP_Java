@@ -1,6 +1,7 @@
 package ru.nsu.ccfit.petrov.task2;
 
 import ru.nsu.ccfit.petrov.task2.command.Command;
+import ru.nsu.ccfit.petrov.task2.exception.ResourceException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +13,7 @@ public class CommandCreator
 
     public CommandCreator()
     {
-        try (InputStream resourceIn = Main.class.getResourceAsStream("config.properties"))
+        try (InputStream resourceIn = CommandCreator.class.getResourceAsStream("config.properties"))
         {
             // Get properties from config file
             properties = new Properties();
@@ -20,7 +21,7 @@ public class CommandCreator
         }
         catch (IOException ex)
         {
-            throw new RuntimeException(ex);
+            throw new ResourceException();
         }
     }
 
@@ -34,6 +35,7 @@ public class CommandCreator
         }
         catch (Exception ignored)
         {
+            // Unrecognized command
             return null;
         }
     }

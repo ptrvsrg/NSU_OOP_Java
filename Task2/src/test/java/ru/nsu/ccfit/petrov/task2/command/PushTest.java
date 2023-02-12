@@ -1,13 +1,14 @@
 package ru.nsu.ccfit.petrov.task2.command;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsNumberException;
-import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsFormatException;
+import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.exception.ArgumentsFormatException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,5 +76,19 @@ class PushTest
                                     pushCmd.run(context);
                                 }
         );
+    }
+
+    @Test
+    void pushVariableTest()
+    {
+        context.addVariable("a", 1.231);
+        Assertions.assertDoesNotThrow(() ->
+                                      {
+                                          pushCmd.setArgs(new ArrayList <>(List.of("a")));
+                                          pushCmd.run(context);
+                                      });
+
+        Assertions.assertEquals(1.231,
+                                context.popCalculatingValue());
     }
 }

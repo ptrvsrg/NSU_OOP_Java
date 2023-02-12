@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.command.exception.EnoughStackValuesException;
-import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.exception.EnoughStackValuesException;
+import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
 
 import java.util.ArrayList;
 import java.util.List;

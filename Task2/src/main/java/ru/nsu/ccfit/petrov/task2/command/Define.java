@@ -2,9 +2,9 @@ package ru.nsu.ccfit.petrov.task2.command;
 
 import ru.nsu.ccfit.petrov.task2.util.Variable;
 import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsNumberException;
-import ru.nsu.ccfit.petrov.task2.command.exception.ArgumentsFormatException;
-import ru.nsu.ccfit.petrov.task2.command.exception.VariableNameException;
+import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.exception.ArgumentsFormatException;
+import ru.nsu.ccfit.petrov.task2.exception.VariableNameException;
 
 import java.util.List;
 
