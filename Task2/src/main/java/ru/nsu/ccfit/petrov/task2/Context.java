@@ -9,23 +9,18 @@ public class Context
 {
     private final Stack<Double> calculatingValues;
     private final HashMap<String, Double> variables;
-    private OutputStream out;
+    private final OutputStream out;
 
-    public Context()
+    public Context(OutputStream out)
     {
         calculatingValues = new Stack<>();
         variables = new HashMap<>();
-        out = System.out;
+        this.out = out;
     }
 
     public OutputStream getOut()
     {
         return out;
-    }
-
-    public void setOut(OutputStream out)
-    {
-        this.out = out;
     }
 
     public void pushCalculatingValue(Double value)
