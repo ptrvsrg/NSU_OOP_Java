@@ -28,7 +28,7 @@ public class CommandParser
         Pattern wordPattern = Pattern.compile("\\s+");
         args = new ArrayList <>(List.of(wordPattern.split(command)));
 
-        // Extract command name
+        // Split into command name and command arguments
         try
         {
             commandName = args.remove(0);
