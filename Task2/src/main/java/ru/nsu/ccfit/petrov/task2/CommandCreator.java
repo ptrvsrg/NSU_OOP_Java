@@ -16,7 +16,7 @@ public class CommandCreator
                                           .getClassLoader()
                                           .getResourceAsStream("config.properties"))
         {
-            // Get properties from config file
+            // Load properties from config file
             properties = new Properties();
             properties.load(resourceIn);
         }
@@ -32,7 +32,9 @@ public class CommandCreator
         {
             // Get class name by command name from properties
             String className = properties.getProperty(commandName.toUpperCase());
-            return (Command) Class.forName(className).getDeclaredConstructor().newInstance();
+            return (Command) Class.forName(className)
+                                  .getDeclaredConstructor()
+                                  .newInstance();
         }
         catch (Exception ignored)
         {
