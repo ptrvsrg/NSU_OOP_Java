@@ -18,15 +18,15 @@ public class Calculator
 
     void run()
     {
+        // Create calculator context
+        Context context = new Context();
+        context.setOut(out);
+
         // Create parser of lines with commands
         CommandParser cmdParser = new CommandParser();
 
         // Create command creator
         CommandCreator cmdCreator = new CommandCreator();
-
-        // Create calculator context
-        Context context = new Context();
-        context.setOut(out);
 
         // Start reading lines with commands from input stream
         try (BufferedReader buffIn = new BufferedReader(new InputStreamReader(in)))
@@ -39,6 +39,8 @@ public class Calculator
 
                 // Create command
                 Command cmd = cmdCreator.create(cmdParser.getCommandName());
+
+                // Unrecognized command
                 if (cmd == null)
                     continue;
 
