@@ -73,10 +73,20 @@ class CommandLineParserTest
     private static Stream <Arguments> checkExceptionArgs()
     {
         return Stream.of(
-                Arguments.of(new String[]{"-c"}, UnrecognizedOptionException.class),
-                Arguments.of(new String[]{"--mode"}, UnrecognizedOptionException.class),
-                Arguments.of(new String[]{"--input"}, MissingArgumentException.class),
-                Arguments.of(new String[]{"--output"}, MissingArgumentException.class)
+                Arguments.of(new String[]{"-c"},
+                             UnrecognizedOptionException.class),
+                Arguments.of(new String[]{"--mode"},
+                             UnrecognizedOptionException.class),
+                Arguments.of(new String[]{"--help", "--mode"},
+                             UnrecognizedOptionException.class),
+                Arguments.of(new String[]{"--input"},
+                             MissingArgumentException.class),
+                Arguments.of(new String[]{"--output"},
+                             MissingArgumentException.class),
+                Arguments.of(new String[]{"--input", "in_path", "--output"},
+                             MissingArgumentException.class),
+                Arguments.of(new String[]{"--help", "--output"},
+                             MissingArgumentException.class)
         );
     }
 
