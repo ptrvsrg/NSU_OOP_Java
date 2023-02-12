@@ -12,7 +12,9 @@ public class CommandCreator
 
     public CommandCreator()
     {
-        try (InputStream resourceIn = CommandCreator.class.getResourceAsStream("config.properties"))
+        try (InputStream resourceIn = Main.class
+                                          .getClassLoader()
+                                          .getResourceAsStream("config.properties"))
         {
             // Get properties from config file
             properties = new Properties();
