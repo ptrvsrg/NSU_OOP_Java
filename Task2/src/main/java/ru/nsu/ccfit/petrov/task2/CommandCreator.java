@@ -3,7 +3,6 @@ package ru.nsu.ccfit.petrov.task2;
 import ru.nsu.ccfit.petrov.task2.command.Command;
 import ru.nsu.ccfit.petrov.task2.exception.ResourceException;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -19,7 +18,7 @@ public class CommandCreator
             properties = new Properties();
             properties.load(resourceIn);
         }
-        catch (IOException ex)
+        catch (Exception ex)
         {
             throw new ResourceException();
         }
