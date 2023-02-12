@@ -1,4 +1,4 @@
-package ru.nsu.ccfit.petrov.task2.command.exception;
+package ru.nsu.ccfit.petrov.task2.exception;
 
 public class NegativeNumberException
     extends RuntimeException
