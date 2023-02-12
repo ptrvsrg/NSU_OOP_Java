@@ -5,6 +5,6 @@ public class ResourceException
 {
     public ResourceException()
     {
-        super("Unrecognized resource file");
+        super("Resource file is not found");
     }
 }
