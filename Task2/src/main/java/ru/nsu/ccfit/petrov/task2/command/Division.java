@@ -20,14 +20,27 @@ public class Division
     @Override
     public void run(Context context)
     {
+        // Pop divisor from stack
+        if (context.peekCalculatingValue() == null)
+            throw new EnoughStackValuesException();
         Double divisor = context.popCalculatingValue();
+
+        // Pop dividend from stack
+        if (Math.abs(divisor) < 1.0E-09)
+        {
+            // Push divisor onto stack
+            context.pushCalculatingValue(divisor);
+            throw new DivisionByZeroException();
+        }
+        if (context.peekCalculatingValue() == null)
+        {
+            // Push divisor onto stack
+            context.pushCalculatingValue(divisor);
+            throw new EnoughStackValuesException();
+        }
         Double dividend = context.popCalculatingValue();
 
-        if (dividend == null || divisor == null)
-            throw new EnoughStackValuesException();
-        if (Math.abs(divisor) < 1.0E-09)
-            throw new DivisionByZeroException();
-
+        // Push result onto stack
         context.pushCalculatingValue(dividend / divisor);
     }
 }

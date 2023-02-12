@@ -20,13 +20,18 @@ public class SquareRoot
     @Override
     public void run(Context context)
     {
-        Double num = context.popCalculatingValue();
+        // Get element from stack
+        Double num = context.peekCalculatingValue();
 
         if (num == null)
             throw new EnoughStackValuesException();
         if (num < 0)
             throw new NegativeNumberException();
 
+        // Pop element from stack
+        context.popCalculatingValue();
+
+        // Push result onto stack
         context.pushCalculatingValue(Math.sqrt(num));
     }
 }

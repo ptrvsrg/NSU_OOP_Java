@@ -19,12 +19,21 @@ public class Addition
     @Override
     public void run(Context context)
     {
+        // Pop addend2 from stack
+        if (context.peekCalculatingValue() == null)
+            throw new EnoughStackValuesException();
         Double addend2 = context.popCalculatingValue();
+
+        // Pop addend1 from stack
+        if (context.peekCalculatingValue() == null)
+        {
+            // Push addend2 onto stack
+            context.pushCalculatingValue(addend2);
+            throw new EnoughStackValuesException();
+        }
         Double addend1 = context.popCalculatingValue();
 
-        if (addend1 == null || addend2 == null)
-            throw new EnoughStackValuesException();
-
+        // Push result onto stack
         context.pushCalculatingValue(addend1 + addend2);
     }
 }

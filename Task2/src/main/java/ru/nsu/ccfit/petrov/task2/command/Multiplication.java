@@ -19,12 +19,20 @@ public class Multiplication
     @Override
     public void run(Context context)
     {
+        // Pop multiplier2 from stack
+        if (context.peekCalculatingValue() == null)
+            throw new EnoughStackValuesException();
         Double multiplier2 = context.popCalculatingValue();
+
+        // Pop multiplier1 from stack
+        if (context.peekCalculatingValue() == null)
+        {
+            context.pushCalculatingValue(multiplier2);
+            throw new EnoughStackValuesException();
+        }
         Double multiplier1 = context.popCalculatingValue();
 
-        if (multiplier1 == null || multiplier2 == null)
-            throw new EnoughStackValuesException();
-
+        // Push result onto stack
         context.pushCalculatingValue(multiplier1 * multiplier2);
     }
 }

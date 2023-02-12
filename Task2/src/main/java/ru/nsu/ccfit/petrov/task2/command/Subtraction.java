@@ -19,12 +19,21 @@ public class Subtraction
     @Override
     public void run(Context context)
     {
+        // Pop subtrahend from stack
+        if (context.peekCalculatingValue() == null)
+            throw new EnoughStackValuesException();
         Double subtrahend = context.popCalculatingValue();
+
+        // Pop addend1 from stack
+        if (context.peekCalculatingValue() == null)
+        {
+            // Push subtrahend onto stack
+            context.pushCalculatingValue(subtrahend);
+            throw new EnoughStackValuesException();
+        }
         Double minuend = context.popCalculatingValue();
 
-        if (minuend == null || subtrahend == null)
-            throw new EnoughStackValuesException();
-
+        // Push result onto stack
         context.pushCalculatingValue(minuend - subtrahend);
     }
 }
