@@ -56,17 +56,11 @@ public class CommandLineParser
 
     public String getInput()
     {
-        if (commandLine.hasOption("input"))
-            return commandLine.getOptionValue("input");
-        else
-            return null;
+        return commandLine.getOptionValue("input");
     }
 
     public String getOutput()
     {
-        if (commandLine.hasOption("output"))
-            return commandLine.getOptionValue("output");
-        else
-            return null;
+        return commandLine.getOptionValue("output");
     }
 }
