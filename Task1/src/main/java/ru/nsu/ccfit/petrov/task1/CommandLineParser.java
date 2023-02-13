@@ -57,15 +57,13 @@ public class ClParser
         return true;
     }
 
-    public Object getInput()
-            throws ParseException
+    public String getInput()
     {
-        return commandLine.getParsedOptionValue("input");
+        return commandLine.getOptionValue("input");
     }
 
-    public Object getOutput()
-            throws ParseException
+    public String getOutput()
     {
-        return commandLine.getParsedOptionValue("output");
+        return commandLine.getOptionValue("output");
     }
 }
