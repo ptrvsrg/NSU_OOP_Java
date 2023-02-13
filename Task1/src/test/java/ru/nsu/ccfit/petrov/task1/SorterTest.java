@@ -1,42 +1,31 @@
 package ru.nsu.ccfit.petrov.task1;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 class SorterTest
 {
-
-    private static Stream <Arguments> mapSortingByValueArgs()
+    @Test
+    void mapSortingByValueTest()
     {
-        return Stream.of(Arguments.of(Arrays.asList("Albert",
-                                                    "John",
-                                                    "Ronald",
-                                                    "Michael"),
-                                      Arrays.asList(62L,
-                                                    14L,
-                                                    31L,
-                                                    31L),
-                                      Arrays.asList(new AbstractMap.SimpleEntry <>("Albert",
-                                                                                   62L),
-                                                    new AbstractMap.SimpleEntry <>("Michael",
-                                                                                   31L),
-                                                    new AbstractMap.SimpleEntry <>("Ronald",
-                                                                                   31L),
-                                                    new AbstractMap.SimpleEntry <>("John",
-                                                                                   14L))));
-    }
-
-    @ParameterizedTest
-    @MethodSource("mapSortingByValueArgs")
-    void mapSortingByValue(List <String> keys,
-                           List <Long> values,
-                           List <AbstractMap.SimpleEntry <String, Long>> expected)
-    {
+        List <String> keys = Arrays.asList("Albert",
+                                           "John",
+                                           "Ronald",
+                                           "Michael");
+        List <Long> values = Arrays.asList(62L,
+                                           14L,
+                                           31L,
+                                           31L);
+        List <AbstractMap.SimpleEntry <String, Long>> expected = Arrays.asList(new AbstractMap.SimpleEntry <>("Albert",
+                                                                                                              62L),
+                                                                               new AbstractMap.SimpleEntry <>("Michael",
+                                                                                                              31L),
+                                                                               new AbstractMap.SimpleEntry <>("Ronald",
+                                                                                                              31L),
+                                                                               new AbstractMap.SimpleEntry <>("John",
+                                                                                                              14L));
         Map <String, Long> actualMap = new HashMap <>();
         for (int i = 0; i < keys.size(); ++i)
             actualMap.put(keys.get(i),

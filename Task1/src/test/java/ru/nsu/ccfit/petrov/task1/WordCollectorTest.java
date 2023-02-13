@@ -17,27 +17,17 @@ class WordCollectorTest
 
     private static Stream <Arguments> getHistogramArgs()
     {
-        return Stream.of(Arguments.of(new InputStreamReader(new ByteArrayInputStream("a b c a b a".getBytes())),
-                                      Arrays.asList("a",
-                                                    "b",
-                                                    "c"),
-                                      Arrays.asList(3L,
-                                                    2L,
-                                                    1L)),
-                         Arguments.of(new InputStreamReader(new ByteArrayInputStream("".getBytes())),
-                                      new ArrayList <String>(),
-                                      new ArrayList <Long>()),
-                         Arguments.of(new InputStreamReader(new ByteArrayInputStream("a A a bB c C1 43231".getBytes())),
-                                      Arrays.asList("a",
-                                                    "bb",
-                                                    "c",
-                                                    "c1",
-                                                    "43231"),
-                                      Arrays.asList(3L,
-                                                    1L,
-                                                    1L,
-                                                    1L,
-                                                    1L)));
+        return Stream.of(
+                Arguments.of(new InputStreamReader(new ByteArrayInputStream("a b c a b a".getBytes())),
+                              Arrays.asList("a", "b", "c"),
+                              Arrays.asList(3L, 2L, 1L)),
+                 Arguments.of(new InputStreamReader(new ByteArrayInputStream("".getBytes())),
+                              new ArrayList <String>(),
+                              new ArrayList <Long>()),
+                 Arguments.of(new InputStreamReader(new ByteArrayInputStream("a A a bB c C1 43231".getBytes())),
+                              Arrays.asList("a", "bb", "c", "c1", "43231"),
+                              Arrays.asList(3L, 1L, 1L, 1L, 1L))
+        );
     }
 
     @ParameterizedTest
@@ -55,7 +45,7 @@ class WordCollectorTest
         }
         catch (IOException ex)
         {
-            Assertions.fail(ex.getLocalizedMessage());
+            Assertions.fail(ex);
         }
 
         Map <String, Long> expected = new HashMap <>();
@@ -66,8 +56,7 @@ class WordCollectorTest
         Assertions.assertArrayEquals(actual.entrySet()
                                            .toArray(),
                                      expected.entrySet()
-                                             .toArray(),
-                                     "Actual: " + actual + "\n Expected: " + expected);
+                                             .toArray());
     }
 
     @Test
@@ -82,13 +71,10 @@ class WordCollectorTest
         }
         catch (IOException ex)
         {
-            Assertions.fail(ex.getLocalizedMessage());
+            Assertions.fail(ex);
         }
 
-        long actual = wordCollector.getWordCount();
-        long expected = 6L;
-
-        Assertions.assertEquals(actual,
-                                expected);
+        Assertions.assertEquals(wordCollector.getWordCount(),
+                                6L);
     }
 }
