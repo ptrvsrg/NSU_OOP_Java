@@ -58,14 +58,11 @@ public class Calculator
                     continue;
                 }
 
+                // Run command
                 logger.info("Launch command \"" + cmdParser.getCommandName() + "\"");
                 try
                 {
-                    // Set command arguments
-                    cmd.setArgs(cmdParser.getArgs());
-
-                    // Run command
-                    cmd.run(context);
+                    cmd.run(cmdParser.getArgs(), context);
                 }
                 catch (Exception ex)
                 {

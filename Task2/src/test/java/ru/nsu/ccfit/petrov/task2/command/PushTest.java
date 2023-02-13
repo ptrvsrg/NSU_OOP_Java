@@ -39,12 +39,7 @@ class PushTest
     @MethodSource("pushTestArgs")
     void pushTest(ArrayList<String> args, Double expected)
     {
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          pushCmd.setArgs(args);
-                                          pushCmd.run(context);
-                                      });
-
+        Assertions.assertDoesNotThrow(() -> pushCmd.run(args, context));
         Assertions.assertEquals(expected,
                                 context.popCalculatingValue());
     }
@@ -70,24 +65,14 @@ class PushTest
     void exceptionTest(ArrayList<String> args, Class<? extends Throwable> exceptionClass)
     {
         Assertions.assertThrows(exceptionClass,
-                                () ->
-                                {
-                                    pushCmd.setArgs(args);
-                                    pushCmd.run(context);
-                                }
-        );
+                                () -> pushCmd.run(args, context));
     }
 
     @Test
     void pushVariableTest()
     {
         context.addVariable("a", 1.231);
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          pushCmd.setArgs(new ArrayList <>(List.of("a")));
-                                          pushCmd.run(context);
-                                      });
-
+        Assertions.assertDoesNotThrow(() -> pushCmd.run(new ArrayList <>(List.of("a")), context));
         Assertions.assertEquals(1.231,
                                 context.popCalculatingValue());
     }

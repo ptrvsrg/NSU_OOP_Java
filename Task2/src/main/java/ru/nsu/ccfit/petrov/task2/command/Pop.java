@@ -9,15 +9,13 @@ public class Pop
     implements Command
 {
     @Override
-    public void setArgs(List <String> args)
+    public void run(List <String> args, Context context)
     {
+        // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();
-    }
 
-    @Override
-    public void run(Context context)
-    {
+        // Pop value from stack
         context.popCalculatingValue();
     }
 }

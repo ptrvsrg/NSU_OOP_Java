@@ -10,15 +10,12 @@ public class Subtraction
     implements Command
 {
     @Override
-    public void setArgs(List <String> args)
+    public void run(List <String> args, Context context)
     {
+        // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();
-    }
 
-    @Override
-    public void run(Context context)
-    {
         // Pop subtrahend from stack
         if (context.peekCalculatingValue() == null)
             throw new EnoughStackValuesException();

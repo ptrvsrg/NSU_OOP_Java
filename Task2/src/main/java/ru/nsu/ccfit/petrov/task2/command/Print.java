@@ -11,18 +11,19 @@ public class Print
         implements Command
 {
     @Override
-    public void setArgs(List <String> args)
+    public void run(List <String> args, Context context)
     {
+        // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();
-    }
 
-    @Override
-    public void run(Context context)
-    {
-        Double value = context.peekCalculatingValue();
+        // Get output stream from context
         PrintStream out = new PrintStream(context.getOut());
 
+        // Pop value from stack
+        Double value = context.peekCalculatingValue();
+
+        // Print value
         if (value != null)
             out.println(value);
         else

@@ -35,12 +35,7 @@ class AdditionTest
     {
         context.pushCalculatingValue(addend1);
         context.pushCalculatingValue(addend2);
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          additionCmd.setArgs(new ArrayList<>());
-                                          additionCmd.run(context);
-                                      });
-
+        Assertions.assertDoesNotThrow(() -> additionCmd.run(new ArrayList<>(), context));
         Assertions.assertEquals(addend1 + addend2,
                                 context.popCalculatingValue());
     }
@@ -49,20 +44,10 @@ class AdditionTest
     void exceptionTest()
     {
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () ->
-                                {
-                                    additionCmd.setArgs(new ArrayList<>(List.of("1.34")));
-                                    additionCmd.run(context);
-                                }
-        );
+                                () -> additionCmd.run(new ArrayList<>(List.of("1.34")), context));
 
+        context.pushCalculatingValue(12.23);
         Assertions.assertThrows(EnoughStackValuesException.class,
-                                () ->
-                                {
-                                    additionCmd.setArgs(new ArrayList<>());
-                                    context.pushCalculatingValue(12.23);
-                                    additionCmd.run(context);
-                                }
-        );
+                                () -> additionCmd.run(new ArrayList<>(), context));
     }
 }

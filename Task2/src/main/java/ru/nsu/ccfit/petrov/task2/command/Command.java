@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface Command
 {
-    void setArgs(List <String> args);
-    void run(Context context);
+    void run(List <String> args, Context context);
 }

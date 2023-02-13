@@ -21,12 +21,7 @@ class SquareRootTest
     {
         double num = 213.9402;
         context.pushCalculatingValue(num);
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          squareRootCmd.setArgs(new ArrayList <>());
-                                          squareRootCmd.run(context);
-                                      });
-
+        Assertions.assertDoesNotThrow(() -> squareRootCmd.run(new ArrayList <>(), context));
         Assertions.assertEquals(Math.sqrt(num),
                                 context.popCalculatingValue());
     }
@@ -35,28 +30,11 @@ class SquareRootTest
     void exceptionTest()
     {
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () ->
-                                {
-                                    squareRootCmd.setArgs(new ArrayList<>(List.of("1.34")));
-                                    squareRootCmd.run(context);
-                                }
-        );
-
+                                () -> squareRootCmd.run(new ArrayList<>(List.of("1.34")), context));
         Assertions.assertThrows(EnoughStackValuesException.class,
-                                () ->
-                                {
-                                    squareRootCmd.setArgs(new ArrayList<>());
-                                    squareRootCmd.run(context);
-                                }
-        );
-
+                                () -> squareRootCmd.run(new ArrayList<>(), context));
+        context.pushCalculatingValue(-431.12);
         Assertions.assertThrows(NegativeNumberException.class,
-                                () ->
-                                {
-                                    squareRootCmd.setArgs(new ArrayList<>());
-                                    context.pushCalculatingValue(-431.12);
-                                    squareRootCmd.run(context);
-                                }
-        );
+                                () -> squareRootCmd.run(new ArrayList<>(), context));
     }
 }

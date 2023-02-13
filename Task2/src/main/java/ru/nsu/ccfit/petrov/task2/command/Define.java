@@ -11,36 +11,30 @@ import java.util.List;
 public class Define
         implements Command
 {
-    private String name;
-    private Double value;
-
-
-
     @Override
-    public void setArgs(List<String> args)
+    public void run(List<String> args, Context context)
     {
+        // Check args count
         if (args.size() != 2)
             throw new ArgumentsNumberException();
 
         // Get correct variable name
         if (!Variable.isCorrectVariableName(args.get(0)))
             throw new VariableNameException();
-        name = args.get(0);
+        String name = args.get(0);
 
         // Get correct variable value
+        double value;
         try
         {
-            value = Double.valueOf(args.get(1));
+            value = Double.parseDouble(args.get(1));
         }
         catch (NumberFormatException ex)
         {
             throw new ArgumentsFormatException();
         }
-    }
 
-    @Override
-    public void run(Context context)
-    {
+        // Add variable to context
         context.addVariable(name, value);
     }
 }

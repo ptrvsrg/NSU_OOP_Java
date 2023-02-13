@@ -43,11 +43,7 @@ class DefineTest
     @MethodSource("defineTestArgs")
     void defineTest(ArrayList<String> args, HashMap<String, Double> variables)
     {
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          defineCmd.setArgs(args);
-                                          defineCmd.run(context);
-                                      });
+        Assertions.assertDoesNotThrow(() -> defineCmd.run(args, context));
 
         for (Map.Entry <String, Double> expected : variables.entrySet())
             Assertions.assertEquals(expected.getValue(),
@@ -81,6 +77,6 @@ class DefineTest
     void exceptionTest(ArrayList<String> args, Class<? extends Throwable> exceptionClass)
     {
         Assertions.assertThrows(exceptionClass,
-                                () -> defineCmd.setArgs(args));
+                                () -> defineCmd.run(args, context));
     }
 }

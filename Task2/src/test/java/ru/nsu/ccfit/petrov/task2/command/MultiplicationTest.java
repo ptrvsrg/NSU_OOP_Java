@@ -35,12 +35,7 @@ class MultiplicationTest
     {
         context.pushCalculatingValue(multiplier1);
         context.pushCalculatingValue(multiplier2);
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          multiplicationCmd.setArgs(new ArrayList <>());
-                                          multiplicationCmd.run(context);
-                                      });
-
+        Assertions.assertDoesNotThrow(() -> multiplicationCmd.run(new ArrayList <>(), context));
         Assertions.assertEquals(multiplier1 * multiplier2,
                                 context.popCalculatingValue());
     }
@@ -49,20 +44,10 @@ class MultiplicationTest
     void exceptionTest()
     {
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () ->
-                                {
-                                    multiplicationCmd.setArgs(new ArrayList<>(List.of("1.34")));
-                                    multiplicationCmd.run(context);
-                                }
-        );
+                                () -> multiplicationCmd.run(new ArrayList<>(List.of("1.34")), context));
 
+        context.pushCalculatingValue(12.42);
         Assertions.assertThrows(EnoughStackValuesException.class,
-                                () ->
-                                {
-                                    multiplicationCmd.setArgs(new ArrayList<>());
-                                    context.pushCalculatingValue(12.42);
-                                    multiplicationCmd.run(context);
-                                }
-        );
+                                () -> multiplicationCmd.run(new ArrayList<>(), context));
     }
 }

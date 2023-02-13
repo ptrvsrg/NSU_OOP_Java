@@ -19,32 +19,21 @@ class PopTest
     {
         context.pushCalculatingValue(1.1);
         context.pushCalculatingValue(2.2);
-        List<String> args = new ArrayList<>();
 
         // Non-empty stack
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          popCmd.setArgs(args);
-                                          popCmd.run(context);
-                                      });
+        Assertions.assertDoesNotThrow(() -> popCmd.run(new ArrayList<>(), context));
         Assertions.assertEquals(1.1,
                                 context.popCalculatingValue());
 
         // Empty stack
-        Assertions.assertDoesNotThrow(() -> popCmd.run(context));
+        Assertions.assertDoesNotThrow(() -> popCmd.run(new ArrayList<>(), context));
         Assertions.assertNull(context.popCalculatingValue());
     }
 
     @Test
     void exceptionTest()
     {
-        List<String> args = new ArrayList<>(List.of("a"));
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () ->
-                                {
-                                    popCmd.setArgs(args);
-                                    popCmd.run(context);
-                                }
-        );
+                                () -> popCmd.run(new ArrayList<>(List.of("a")), context));
     }
 }

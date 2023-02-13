@@ -35,12 +35,7 @@ class SubtractionTest
     {
         context.pushCalculatingValue(minuend);
         context.pushCalculatingValue(subtrahend);
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          subtractionCmd.setArgs(new ArrayList <>());
-                                          subtractionCmd.run(context);
-                                      });
-
+        Assertions.assertDoesNotThrow(() -> subtractionCmd.run(new ArrayList <>(), context));
         Assertions.assertEquals(minuend - subtrahend,
                                 context.popCalculatingValue());
     }
@@ -49,20 +44,9 @@ class SubtractionTest
     void exceptionTest()
     {
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () ->
-                                {
-                                    subtractionCmd.setArgs(new ArrayList<>(List.of("1.34")));
-                                    subtractionCmd.run(context);
-                                }
-        );
-
+                                () -> subtractionCmd.run(new ArrayList<>(List.of("1.34")), context));
+        context.pushCalculatingValue(12.43);
         Assertions.assertThrows(EnoughStackValuesException.class,
-                                () ->
-                                {
-                                    subtractionCmd.setArgs(new ArrayList<>());
-                                    context.pushCalculatingValue(12.43);
-                                    subtractionCmd.run(context);
-                                }
-        );
+                                () -> subtractionCmd.run(new ArrayList<>(), context));
     }
 }

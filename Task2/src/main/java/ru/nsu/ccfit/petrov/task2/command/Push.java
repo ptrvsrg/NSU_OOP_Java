@@ -10,21 +10,17 @@ import java.util.List;
 public class Push
     implements Command
 {
-    private String value;
-
     @Override
-    public void setArgs(List <String> args)
+    public void run(List <String> args, Context context)
     {
+        // Check args count
         if (args.size() != 1)
             throw new ArgumentsNumberException();
 
         // Get variable name or number value
-        value = args.get(0);
-    }
+        String value = args.get(0);
 
-    @Override
-    public void run(Context context)
-    {
+        // Push number or variable value onto stack
         try
         {
             if (Variable.isCorrectVariableName(value))

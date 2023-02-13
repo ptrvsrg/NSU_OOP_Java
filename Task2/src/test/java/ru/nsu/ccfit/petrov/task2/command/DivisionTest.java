@@ -36,12 +36,7 @@ class DivisionTest
     {
         context.pushCalculatingValue(dividend);
         context.pushCalculatingValue(divisor);
-        Assertions.assertDoesNotThrow(() ->
-                                      {
-                                          divisionCmd.setArgs(new ArrayList <>());
-                                          divisionCmd.run(context);
-                                      });
-
+        Assertions.assertDoesNotThrow(() -> divisionCmd.run(new ArrayList <>(), context));
         Assertions.assertEquals(dividend / divisor,
                                 context.popCalculatingValue());
     }
@@ -50,30 +45,14 @@ class DivisionTest
     void exceptionTest()
     {
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () ->
-                                {
-                                    divisionCmd.setArgs(new ArrayList<>(List.of("1.34")));
-                                    divisionCmd.run(context);
-                                }
-        );
+                                () -> divisionCmd.run(new ArrayList<>(List.of("1.34")), context));
 
+        context.pushCalculatingValue(12.34);
         Assertions.assertThrows(EnoughStackValuesException.class,
-                                () ->
-                                {
-                                    divisionCmd.setArgs(new ArrayList<>());
-                                    context.pushCalculatingValue(12.34);
-                                    divisionCmd.run(context);
-                                }
-        );
+                                () -> divisionCmd.run(new ArrayList<>(), context));
 
+        context.pushCalculatingValue(0.0);
         Assertions.assertThrows(DivisionByZeroException.class,
-                                () ->
-                                {
-                                    divisionCmd.setArgs(new ArrayList<>());
-                                    context.pushCalculatingValue(431.12);
-                                    context.pushCalculatingValue(0.0);
-                                    divisionCmd.run(context);
-                                }
-        );
+                                () -> divisionCmd.run(new ArrayList<>(), context));
     }
 }

@@ -12,21 +12,13 @@ import java.util.List;
 class PrintTest
 {
     private final Print printCmd = new Print();
+    private final Context context = new Context(new ByteArrayOutputStream());
 
     @Test
     void printTest()
     {
-        Context context = new Context(new ByteArrayOutputStream());
-        List <String> args = new ArrayList <>();
-
         context.pushCalculatingValue(1.1);
-        Assertions.assertDoesNotThrow(
-                () ->
-                {
-                    printCmd.setArgs(args);
-                    printCmd.run(context);
-                }
-        );
+        Assertions.assertDoesNotThrow(() -> printCmd.run(new ArrayList <>(), context));
         Assertions.assertEquals(context.getOut().toString(),
                                 "1.1\n");
     }
@@ -34,8 +26,7 @@ class PrintTest
     @Test
     void exceptionTest()
     {
-        List<String> args = new ArrayList<>(List.of("a"));
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () -> printCmd.setArgs(args));
+                                () -> printCmd.run(new ArrayList<>(List.of("a")), context));
     }
 }

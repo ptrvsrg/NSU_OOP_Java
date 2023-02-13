@@ -11,15 +11,12 @@ public class Division
     implements Command
 {
     @Override
-    public void setArgs(List <String> args)
+    public void run(List <String> args, Context context)
     {
+        // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();
-    }
 
-    @Override
-    public void run(Context context)
-    {
         // Pop divisor from stack
         if (context.peekCalculatingValue() == null)
             throw new EnoughStackValuesException();
