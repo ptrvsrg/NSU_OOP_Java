@@ -2,13 +2,14 @@ package ru.nsu.ccfit.petrov.task1;
 
 import org.apache.commons.cli.*;
 
-public class ClParser
+public class CommandLineParser
 {
     private CommandLine commandLine;
 
     public boolean parse(String[] args)
             throws ParseException
     {
+        // Add help option
         Options opts = new Options();
         opts.addOption(Option.builder()
                              .option("h")
@@ -16,11 +17,13 @@ public class ClParser
                              .desc("Print command help")
                              .build());
 
-        CommandLineParser clParser = new DefaultParser();
+        // Parse command line with help option
+        org.apache.commons.cli.CommandLineParser clParser = new DefaultParser();
         commandLine = clParser.parse(opts,
                                      args,
                                      true);
 
+        // Add other options
         opts.addOption(Option.builder()
                              .option("i")
                              .longOpt("input")
@@ -42,8 +45,8 @@ public class ClParser
                              .required()
                              .build());
 
-        if (args.length == 0 ||
-            commandLine.hasOption("help"))
+        // Print help
+        if (args.length == 0 || commandLine.hasOption("help"))
         {
             HelpFormatter helpFormatter = new HelpFormatter();
             helpFormatter.printHelp("app",
@@ -52,6 +55,7 @@ public class ClParser
             return false;
         }
 
+        // Parse command line with all options
         commandLine = clParser.parse(opts,
                                      args);
         return true;
