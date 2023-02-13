@@ -12,12 +12,12 @@ public class Main
     {
         try
         {
-            ClParser clParser = new ClParser();
+            CommandLineParser clParser = new CommandLineParser();
             if (!clParser.parse(args))
                 return;
 
-            String inputFile = (String) clParser.getInput();
-            String outputFile = (String) clParser.getOutput();
+            String inputFile = clParser.getInput();
+            String outputFile = clParser.getOutput();
 
             try (InputStreamReader inputStreamReader = new FileReader(inputFile);
                  OutputStreamWriter outputStreamWriter = new FileWriter(outputFile, false))
@@ -30,13 +30,10 @@ public class Main
                                  wordCollector.getWordCount());
             }
         }
-        catch (ParseException ex)
+        catch (ParseException |
+               IOException ex)
         {
-            System.err.println(ex.getLocalizedMessage());
-        }
-        catch (IOException ex)
-        {
-            System.err.println(ex.getMessage());
+            ex.printStackTrace(System.err);
         }
     }
 }
