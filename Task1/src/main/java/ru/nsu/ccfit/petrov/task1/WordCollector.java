@@ -18,12 +18,13 @@ public class WordCollector
     public long getWordCount()
     {
         if (!hasHistogram)
-            throw new UnsupportedOperationException("The operation is not supported. " + "Histogram was not received");
+            throw new UnsupportedOperationException("The operation is not supported. " +
+                                                    "Histogram was not received");
         return wordCount;
     }
 
-    private void addHistogram(HashMap <String, Long> histogram,
-                              StringBuilder word)
+    private void addWord(HashMap <String, Long> histogram,
+                         StringBuilder word)
     {
         histogram.compute(new String(word).toLowerCase(),
                           (key, value) -> (value == null) ? 1 : value + 1);
@@ -43,13 +44,13 @@ public class WordCollector
             if (Character.isLetterOrDigit(symCode))
                 word.append((char) symCode);
             else if (word.length() != 0)
-                addHistogram(histogram,
-                             word);
+                addWord(histogram,
+                        word);
         }
 
         if (word.length() != 0)
-            addHistogram(histogram,
-                         word);
+            addWord(histogram,
+                    word);
 
         hasHistogram = true;
         return histogram;
