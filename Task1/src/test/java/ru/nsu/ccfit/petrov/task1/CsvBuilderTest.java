@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
-import java.util.*;
 
 class CsvBuilderTest
 {
@@ -15,11 +14,13 @@ class CsvBuilderTest
     {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         CsvBuilder csvBuilder = new CsvBuilder(new OutputStreamWriter(out));
-        HashMap <String, Long> histogram = new HashMap <>();
-        histogram.put("Misha", 1L);
-        histogram.put("Masha", 3L);
+        SortedHistogram histogram = new SortedHistogram();
+        histogram.add("Misha");
+        histogram.add("Masha");
+        histogram.add("Masha");
+        histogram.add("Masha");
 
-        Assertions.assertDoesNotThrow(() -> csvBuilder.build(histogram.entrySet(), 4L));
+        Assertions.assertDoesNotThrow(() -> csvBuilder.build(histogram, 4L));
         Assertions.assertEquals(out.toString(),
                                 "Word,Frequency,Frequency percentage\n" +
                                 "Masha,3,75.000\n" +
