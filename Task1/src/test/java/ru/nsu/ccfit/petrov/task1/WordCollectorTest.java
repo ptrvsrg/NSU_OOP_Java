@@ -53,17 +53,17 @@ class WordCollectorTest
             for (int j = 0; j < values.get(i); ++j)
                 expected.add(keys.get(i));
 
-        Iterator <Map.Entry<String, Long>> actualIter = actual.iterator();
-        Iterator <Map.Entry<String, Long>> expectedIter = expected.iterator();
+        Iterator <CountedWord> actualIter = actual.iterator();
+        Iterator <CountedWord> expectedIter = expected.iterator();
 
         while (actualIter.hasNext() && expectedIter.hasNext())
         {
-            Map.Entry<String, Long> actualEntry = actualIter.next();
-            Map.Entry<String, Long> expectedEntry = expectedIter.next();
-            Assertions.assertEquals(actualEntry.getValue(),
-                                    expectedEntry.getValue());
-            Assertions.assertEquals(actualEntry.getKey(),
-                                    expectedEntry.getKey());
+            CountedWord actualEntry = actualIter.next();
+            CountedWord expectedEntry = expectedIter.next();
+            Assertions.assertEquals(actualEntry.getCount(),
+                                    expectedEntry.getCount());
+            Assertions.assertEquals(actualEntry.getWord(),
+                                    expectedEntry.getWord());
         }
 
         Assertions.assertFalse(actualIter.hasNext());

@@ -20,11 +20,11 @@ public class CsvBuilder
             throws IOException
     {
         out.write("Word,Frequency,Frequency percentage\n");
-        for (Map.Entry <String, Long> entry : histogram)
+        for (CountedWord entry : histogram)
         {
-            double frequencyPercentage = (double) entry.getValue() * 100 / wordCount;
-            out.write(entry.getKey() + ",");
-            out.write(entry.getValue() + ",");
+            double frequencyPercentage = (double) entry.getCount() * 100 / wordCount;
+            out.write(entry.getWord() + ",");
+            out.write(entry.getCount() + ",");
             out.write(String.format("%.3f", frequencyPercentage) + "\n");
             out.flush();
         }

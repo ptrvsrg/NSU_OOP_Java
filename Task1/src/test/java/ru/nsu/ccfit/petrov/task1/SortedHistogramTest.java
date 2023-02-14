@@ -12,40 +12,44 @@ class SortedHistogramTest
 {
     private static Stream<Arguments> sortedHistogramTestArgs()
     {
-        return Stream.of(
-                Arguments.of(new ArrayList<>(),
-                             new ArrayList<>()),
-                Arguments.of(List.of(new AbstractMap.SimpleEntry<>("a", 3L),
-                                     new AbstractMap.SimpleEntry<>("c", 1L),
-                                     new AbstractMap.SimpleEntry<>("b", 2L)),
-                             List.of(new AbstractMap.SimpleEntry<>("a", 3L),
-                                     new AbstractMap.SimpleEntry<>("b", 2L),
-                                     new AbstractMap.SimpleEntry<>("c", 1L)))
-        );
+        return Stream.of(Arguments.of(new ArrayList <>(),
+                                      new ArrayList <>()),
+                         Arguments.of(List.of(new CountedWord("a",
+                                                              3L),
+                                              new CountedWord("c",
+                                                              1L),
+                                              new CountedWord("b",
+                                                              2L)),
+                                      List.of(new CountedWord("a",
+                                                              3L),
+                                              new CountedWord("b",
+                                                              2L),
+                                              new CountedWord("c",
+                                                              1L))));
     }
 
     @ParameterizedTest
     @MethodSource("sortedHistogramTestArgs")
-    void sortedHistogramTest(List <Map.Entry<String, Long>> actual,
-                             List <Map.Entry<String, Long>> expected)
+    void sortedHistogramTest(List <CountedWord> actual,
+                             List <CountedWord> expected)
     {
         SortedHistogram histogram = new SortedHistogram();
 
-        for (Map.Entry <String, Long>  entry : actual)
-            for (int i = 0; i < entry.getValue(); ++i)
-                histogram.add(entry.getKey());
+        for (CountedWord entry : actual)
+            for (int i = 0; i < entry.getCount(); ++i)
+                histogram.add(entry.getWord());
 
-        Iterator <Map.Entry<String, Long>> actualIter = histogram.iterator();
-        Iterator <Map.Entry<String, Long>> expectedIter = expected.iterator();
+        Iterator <CountedWord> actualIter = histogram.iterator();
+        Iterator <CountedWord> expectedIter = expected.iterator();
 
         while (actualIter.hasNext() && expectedIter.hasNext())
         {
-            Map.Entry<String, Long> actualEntry = actualIter.next();
-            Map.Entry<String, Long> expectedEntry = expectedIter.next();
-            Assertions.assertEquals(actualEntry.getValue(),
-                                    expectedEntry.getValue());
-            Assertions.assertEquals(actualEntry.getKey(),
-                                    expectedEntry.getKey());
+            CountedWord actualEntry = actualIter.next();
+            CountedWord expectedEntry = expectedIter.next();
+            Assertions.assertEquals(actualEntry.getCount(),
+                                    expectedEntry.getCount());
+            Assertions.assertEquals(actualEntry.getWord(),
+                                    expectedEntry.getWord());
         }
 
         Assertions.assertFalse(actualIter.hasNext());

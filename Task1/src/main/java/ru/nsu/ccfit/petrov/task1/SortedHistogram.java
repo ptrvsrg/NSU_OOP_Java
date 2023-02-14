@@ -3,13 +3,13 @@ package ru.nsu.ccfit.petrov.task1;
 import java.util.*;
 
 public class SortedHistogram
-        implements Iterable <Map.Entry <String, Long>>
+        implements Iterable <CountedWord>
 {
-    private final SortedSet <Map.Entry <String, Long>> histogram;
+    private final SortedSet <CountedWord> histogram;
 
     public SortedHistogram()
     {
-        Comparator <Map.Entry <String, Long>> comparator = (o1, o2) ->
+        Comparator <CountedWord> comparator = (o1, o2) ->
         {
             if (Objects.equals(o1.getValue(),
                                o2.getValue()))
@@ -25,22 +25,22 @@ public class SortedHistogram
 
     void add(String word)
     {
-        for (Map.Entry <String, Long> entry : histogram)
-            if (entry.getKey()
+        for (CountedWord entry : histogram)
+            if (entry.getWord()
                      .equals(word))
             {
                 histogram.remove(entry);
-                histogram.add(new AbstractMap.SimpleEntry <>(word,
-                                                             entry.getValue() + 1L));
+                entry.setCount(entry.getCount() + 1L);
+                histogram.add(entry);
                 return;
             }
 
-        histogram.add(new AbstractMap.SimpleEntry <>(word,
-                                                     1L));
+        histogram.add(new CountedWord(word,
+                                      1L));
     }
 
     @Override
-    public Iterator <Map.Entry <String, Long>> iterator()
+    public Iterator <CountedWord> iterator()
     {
         return histogram.iterator();
     }
