@@ -17,17 +17,27 @@ class WordCollectorTest
 
     private static Stream <Arguments> getHistogramArgs()
     {
-        return Stream.of(
-                Arguments.of(new InputStreamReader(new ByteArrayInputStream("a b c a b a".getBytes())),
-                              Arrays.asList("a", "b", "c"),
-                              Arrays.asList(3L, 2L, 1L)),
-                 Arguments.of(new InputStreamReader(new ByteArrayInputStream("".getBytes())),
-                              new ArrayList <String>(),
-                              new ArrayList <Long>()),
-                 Arguments.of(new InputStreamReader(new ByteArrayInputStream("a A a bB c C1 43231".getBytes())),
-                              Arrays.asList("a", "bb", "c", "c1", "43231"),
-                              Arrays.asList(3L, 1L, 1L, 1L, 1L))
-        );
+        return Stream.of(Arguments.of(new InputStreamReader(new ByteArrayInputStream("a b c a b a".getBytes())),
+                                      Arrays.asList("a",
+                                                    "b",
+                                                    "c"),
+                                      Arrays.asList(3L,
+                                                    2L,
+                                                    1L)),
+                         Arguments.of(new InputStreamReader(new ByteArrayInputStream("".getBytes())),
+                                      new ArrayList <String>(),
+                                      new ArrayList <Long>()),
+                         Arguments.of(new InputStreamReader(new ByteArrayInputStream("a A a bB c C1 43231".getBytes())),
+                                      Arrays.asList("a",
+                                                    "bb",
+                                                    "c",
+                                                    "c1",
+                                                    "43231"),
+                                      Arrays.asList(3L,
+                                                    1L,
+                                                    1L,
+                                                    1L,
+                                                    1L)));
     }
 
     @ParameterizedTest

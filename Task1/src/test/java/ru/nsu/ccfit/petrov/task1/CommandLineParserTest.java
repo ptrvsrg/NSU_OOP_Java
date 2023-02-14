@@ -17,20 +17,18 @@ class CommandLineParserTest
 
     private static Stream <Arguments> parserTestArgs()
     {
-        return Stream.of(
-                Arguments.of(new String[]{"--input", "path", "--output", "path.csv"},
-                             "path",
-                             "path.csv"),
-                Arguments.of(new String[]{"-i", "path", "--output", "path.csv"},
-                             "path",
-                             "path.csv"),
-                Arguments.of(new String[]{"--input", "path", "-o", "path.csv"},
-                             "path",
-                             "path.csv"),
-                Arguments.of(new String[]{"-i", "path", "-o", "path.csv"},
-                             "path",
-                             "path.csv")
-        );
+        return Stream.of(Arguments.of(new String[]{"--input", "path", "--output", "path.csv"},
+                                      "path",
+                                      "path.csv"),
+                         Arguments.of(new String[]{"-i", "path", "--output", "path.csv"},
+                                      "path",
+                                      "path.csv"),
+                         Arguments.of(new String[]{"--input", "path", "-o", "path.csv"},
+                                      "path",
+                                      "path.csv"),
+                         Arguments.of(new String[]{"-i", "path", "-o", "path.csv"},
+                                      "path",
+                                      "path.csv"));
     }
 
     @ParameterizedTest
@@ -48,30 +46,28 @@ class CommandLineParserTest
 
     private static Stream <Arguments> exceptionTestArgs()
     {
-        return Stream.of(
-                Arguments.of(new String[]{"--input", "path"},
-                             MissingOptionException.class),
-                Arguments.of(new String[]{"--output", "path.csv"},
-                             MissingOptionException.class),
-                Arguments.of(new String[]{"--input"},
-                             MissingArgumentException.class),
-                Arguments.of(new String[]{"--output"},
-                             MissingArgumentException.class),
-                Arguments.of(new String[]{"-i", "path"},
-                             MissingOptionException.class),
-                Arguments.of(new String[]{"-o", "path.csv"},
-                             MissingOptionException.class),
-                Arguments.of(new String[]{"-i"},
-                             MissingArgumentException.class),
-                Arguments.of(new String[]{"-o"},
-                             MissingArgumentException.class),
-                Arguments.of(new String[]{"--config", "path.json"},
-                             UnrecognizedOptionException.class),
-                Arguments.of(new String[]{"-c", "path.json"},
-                             UnrecognizedOptionException.class),
-                Arguments.of(new String[]{"--input", "path", "--output", "path.csv", "--config", "path.json"},
-                             UnrecognizedOptionException.class)
-        );
+        return Stream.of(Arguments.of(new String[]{"--input", "path"},
+                                      MissingOptionException.class),
+                         Arguments.of(new String[]{"--output", "path.csv"},
+                                      MissingOptionException.class),
+                         Arguments.of(new String[]{"--input"},
+                                      MissingArgumentException.class),
+                         Arguments.of(new String[]{"--output"},
+                                      MissingArgumentException.class),
+                         Arguments.of(new String[]{"-i", "path"},
+                                      MissingOptionException.class),
+                         Arguments.of(new String[]{"-o", "path.csv"},
+                                      MissingOptionException.class),
+                         Arguments.of(new String[]{"-i"},
+                                      MissingArgumentException.class),
+                         Arguments.of(new String[]{"-o"},
+                                      MissingArgumentException.class),
+                         Arguments.of(new String[]{"--config", "path.json"},
+                                      UnrecognizedOptionException.class),
+                         Arguments.of(new String[]{"-c", "path.json"},
+                                      UnrecognizedOptionException.class),
+                         Arguments.of(new String[]{"--input", "path", "--output", "path.csv", "--config", "path.json"},
+                                      UnrecognizedOptionException.class));
     }
 
     @ParameterizedTest
@@ -85,14 +81,12 @@ class CommandLineParserTest
 
     private static Stream <Arguments> printHelpTestArgs()
     {
-        return Stream.of(
-                Arguments.of((Object) new String[]{}),
-                Arguments.of((Object) new String[]{"--help"}),
-                Arguments.of((Object) new String[]{"-h"}),
-                Arguments.of((Object) new String[]{"--help", "--input", "path"}),
-                Arguments.of((Object) new String[]{"--help", "--input"}),
-                Arguments.of((Object) new String[]{"--help", "--config"})
-        );
+        return Stream.of(Arguments.of((Object) new String[]{}),
+                         Arguments.of((Object) new String[]{"--help"}),
+                         Arguments.of((Object) new String[]{"-h"}),
+                         Arguments.of((Object) new String[]{"--help", "--input", "path"}),
+                         Arguments.of((Object) new String[]{"--help", "--input"}),
+                         Arguments.of((Object) new String[]{"--help", "--config"}));
     }
 
     @ParameterizedTest

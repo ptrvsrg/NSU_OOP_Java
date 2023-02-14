@@ -11,13 +11,13 @@ public class SortedHistogram
     {
         Comparator <CountedWord> comparator = (o1, o2) ->
         {
-            if (Objects.equals(o1.getValue(),
-                               o2.getValue()))
-                return o1.getKey()
-                         .compareTo(o2.getKey());
+            if (o1.getCount()
+                  .equals(o2.getCount()))
+                return o1.getWord()
+                         .compareTo(o2.getWord());
 
-            return o2.getValue()
-                     .compareTo(o1.getValue());
+            return o2.getCount()
+                     .compareTo(o1.getCount());
         };
 
         histogram = new TreeSet <>(comparator);

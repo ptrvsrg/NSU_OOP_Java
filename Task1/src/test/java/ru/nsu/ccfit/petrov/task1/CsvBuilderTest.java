@@ -20,10 +20,9 @@ class CsvBuilderTest
         histogram.add("Masha");
         histogram.add("Masha");
 
-        Assertions.assertDoesNotThrow(() -> csvBuilder.build(histogram, 4L));
+        Assertions.assertDoesNotThrow(() -> csvBuilder.build(histogram,
+                                                             4L));
         Assertions.assertEquals(out.toString(),
-                                "Word,Frequency,Frequency percentage\n" +
-                                "Masha,3,75.000\n" +
-                                "Misha,1,25.000\n");
+                                "Word,Frequency,Frequency percentage\n" + "Masha,3,75.000\n" + "Misha,1,25.000\n");
     }
 }

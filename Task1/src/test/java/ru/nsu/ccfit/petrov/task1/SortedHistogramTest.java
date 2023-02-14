@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 class SortedHistogramTest
 {
-    private static Stream<Arguments> sortedHistogramTestArgs()
+    private static Stream <Arguments> sortedHistogramTestArgs()
     {
         return Stream.of(Arguments.of(new ArrayList <>(),
                                       new ArrayList <>()),

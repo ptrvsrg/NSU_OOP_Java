@@ -25,7 +25,8 @@ public class Main
         String outputFile = clParser.getOutput();
 
         try (WordCollector wordCollector = new WordCollector(new FileReader(inputFile));
-             CsvBuilder csvBuilder = new CsvBuilder(new FileWriter(outputFile, false)))
+             CsvBuilder csvBuilder = new CsvBuilder(new FileWriter(outputFile,
+                                                                   false)))
         {
             SortedHistogram histogram = wordCollector.getHistogram();
             csvBuilder.build(histogram,
