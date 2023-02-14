@@ -3,29 +3,28 @@ package ru.nsu.ccfit.petrov.task1;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Map;
-import java.util.Set;
 
 public class CsvBuilder
 {
-    private final OutputStreamWriter csvWriter;
+    private final OutputStreamWriter out;
 
     public CsvBuilder(OutputStreamWriter outputStreamWriter)
     {
-        csvWriter = outputStreamWriter;
+        out = outputStreamWriter;
     }
 
     public void build(Set <Map.Entry <String, Long>> set,
                       long wordCount)
             throws IOException
     {
-        csvWriter.write("Word,Frequency,Frequency percentage\n");
-        for (Map.Entry <String, Long> elem : set)
+        out.write("Word,Frequency,Frequency percentage\n");
+        for (Map.Entry <String, Long> entry : histogram)
         {
-            double frequencyPercentage = (double) elem.getValue() * 100 / wordCount;
-            csvWriter.write(elem.getKey() + ",");
-            csvWriter.write(elem.getValue() + ",");
-            csvWriter.write(String.format("%.3f", frequencyPercentage) + "\n");
-            csvWriter.flush();
+            double frequencyPercentage = (double) entry.getValue() * 100 / wordCount;
+            out.write(entry.getKey() + ",");
+            out.write(entry.getValue() + ",");
+            out.write(String.format("%.3f", frequencyPercentage) + "\n");
+            out.flush();
         }
     }
 }
