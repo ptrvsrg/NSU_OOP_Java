@@ -1,10 +1,12 @@
 package ru.nsu.ccfit.petrov.task1;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Map;
 
 public class CsvBuilder
+    implements Closeable
 {
     private final OutputStreamWriter out;
 
@@ -26,5 +28,12 @@ public class CsvBuilder
             out.write(String.format("%.3f", frequencyPercentage) + "\n");
             out.flush();
         }
+    }
+
+    @Override
+    public void close()
+            throws IOException
+    {
+        out.close();
     }
 }
