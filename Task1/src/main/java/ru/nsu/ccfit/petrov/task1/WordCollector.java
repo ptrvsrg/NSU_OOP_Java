@@ -1,10 +1,12 @@
 package ru.nsu.ccfit.petrov.task1;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
 public class WordCollector
+        implements Closeable
 {
     private long wordCount = 0;
     private final InputStreamReader in;
@@ -48,5 +50,12 @@ public class WordCollector
                     word);
 
         return histogram;
+    }
+
+    @Override
+    public void close()
+            throws IOException
+    {
+        in.close();
     }
 }
