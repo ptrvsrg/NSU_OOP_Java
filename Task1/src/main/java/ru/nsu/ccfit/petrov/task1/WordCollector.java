@@ -19,19 +19,18 @@ public class WordCollector
         return wordCount;
     }
 
-    private void addWord(HashMap <String, Long> histogram,
+    private void addWord(SortedHistogram histogram,
                          StringBuilder word)
     {
-        histogram.compute(new String(word).toLowerCase(),
-                          (key, value) -> (value == null) ? 1 : value + 1);
+        histogram.add(new String(word).toLowerCase());
         word.setLength(0);
         ++wordCount;
     }
 
-    public HashMap <String, Long> getHistogram()
+    public SortedHistogram getHistogram()
             throws IOException
     {
-        HashMap <String, Long> histogram = new HashMap <>();
+        SortedHistogram histogram = new SortedHistogram();
         StringBuilder word = new StringBuilder();
         int symCode;
 
