@@ -7,19 +7,15 @@ import java.util.HashMap;
 public class WordCollector
 {
     private long wordCount = 0;
-    private boolean hasHistogram = false;
-    private final InputStreamReader textReader;
+    private final InputStreamReader in;
 
     public WordCollector(InputStreamReader inputStreamReader)
     {
-        textReader = inputStreamReader;
+        in = inputStreamReader;
     }
 
     public long getWordCount()
     {
-        if (!hasHistogram)
-            throw new UnsupportedOperationException("The operation is not supported. " +
-                                                    "Histogram was not received");
         return wordCount;
     }
 
@@ -39,7 +35,7 @@ public class WordCollector
         StringBuilder word = new StringBuilder();
         int symCode;
 
-        while ((symCode = textReader.read()) != -1)
+        while ((symCode = in.read()) != -1)
         {
             if (Character.isLetterOrDigit(symCode))
                 word.append((char) symCode);
@@ -52,7 +48,6 @@ public class WordCollector
             addWord(histogram,
                     word);
 
-        hasHistogram = true;
         return histogram;
     }
 }
