@@ -37,7 +37,7 @@ class WordCollectorTest
                       List <Long> values)
     {
         WordCollector wordCollector = new WordCollector(reader);
-        Map <String, Long> actual = null;
+        SortedHistogram actual = null;
 
         try
         {
@@ -48,23 +48,33 @@ class WordCollectorTest
             Assertions.fail(ex);
         }
 
-        Map <String, Long> expected = new HashMap <>();
+        SortedHistogram expected = new SortedHistogram();
         for (int i = 0; i < keys.size(); ++i)
-            expected.put(keys.get(i),
-                         values.get(i));
+            for (int j = 0; j < values.get(i); ++j)
+                expected.add(keys.get(i));
 
-        Assertions.assertArrayEquals(actual.entrySet()
-                                           .toArray(),
-                                     expected.entrySet()
-                                             .toArray());
+        Iterator <Map.Entry<String, Long>> actualIter = actual.iterator();
+        Iterator <Map.Entry<String, Long>> expectedIter = expected.iterator();
+
+        while (actualIter.hasNext() && expectedIter.hasNext())
+        {
+            Map.Entry<String, Long> actualEntry = actualIter.next();
+            Map.Entry<String, Long> expectedEntry = expectedIter.next();
+            Assertions.assertEquals(actualEntry.getValue(),
+                                    expectedEntry.getValue());
+            Assertions.assertEquals(actualEntry.getKey(),
+                                    expectedEntry.getKey());
+        }
+
+        Assertions.assertFalse(actualIter.hasNext());
+        Assertions.assertFalse(expectedIter.hasNext());
     }
 
     @Test
     void getWordCount()
     {
         WordCollector wordCollector = new WordCollector(new InputStreamReader(new ByteArrayInputStream("a b c a b a".getBytes())));
-        Assertions.assertThrows(UnsupportedOperationException.class,
-                                wordCollector::getWordCount);
+
         try
         {
             wordCollector.getHistogram();
