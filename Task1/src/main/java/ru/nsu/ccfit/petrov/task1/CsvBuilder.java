@@ -15,7 +15,7 @@ public class CsvBuilder
         out = outputStreamWriter;
     }
 
-    public void build(Set <Map.Entry <String, Long>> set,
+    public void build(SortedHistogram histogram,
                       long wordCount)
             throws IOException
     {
