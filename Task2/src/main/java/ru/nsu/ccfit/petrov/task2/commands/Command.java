@@ -1,6 +1,6 @@
-package ru.nsu.ccfit.petrov.task2.command;
+package ru.nsu.ccfit.petrov.task2.commands;
 
-import ru.nsu.ccfit.petrov.task2.Context;
+import ru.nsu.ccfit.petrov.task2.context.Context;
 
 import java.util.List;
 
