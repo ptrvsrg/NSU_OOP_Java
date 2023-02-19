@@ -6,6 +6,7 @@ import ru.nsu.ccfit.petrov.task2.command.Command;
 import java.io.*;
 
 public class Calculator
+    implements Closeable
 {
     private static final Logger logger = Logger.getRootLogger();
     private final InputStream in;
@@ -74,5 +75,20 @@ public class Calculator
         {
             logger.error("", ex);
         }
+    }
+
+    @Override
+    public void close()
+            throws IOException
+    {
+        close(in);
+        close(out);
+    }
+
+    private void close(Closeable obj)
+            throws IOException
+    {
+        if (obj != null)
+            obj.close();
     }
 }
