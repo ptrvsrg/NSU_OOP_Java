@@ -4,7 +4,6 @@ import ru.nsu.ccfit.petrov.task2.context.exception.ArgumentsFormatException;
 import ru.nsu.ccfit.petrov.task2.context.exception.EmptyStackException;
 import ru.nsu.ccfit.petrov.task2.context.exception.VariableNameException;
 import ru.nsu.ccfit.petrov.task2.context.exception.VariableOverwritingException;
-import ru.nsu.ccfit.petrov.task2.util.Variable;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -70,7 +69,7 @@ public class Context
 
     public void addVariable(Object name, Object value)
     {
-        if (name == null || !Variable.isCorrectVariableName(name.toString()))
+        if (name == null || !isCorrectVariableName(name.toString()))
             throw new VariableNameException();
 
         if (variables.containsKey(name.toString()))
