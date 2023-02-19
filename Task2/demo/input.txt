@@ -13,7 +13,6 @@ PUSH c
 *
 -
 SQRT
-+
 PUSH b
 -
 PUSH 2
