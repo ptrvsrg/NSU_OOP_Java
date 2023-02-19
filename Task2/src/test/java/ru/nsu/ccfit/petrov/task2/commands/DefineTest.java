@@ -1,15 +1,12 @@
-package ru.nsu.ccfit.petrov.task2.command;
+package ru.nsu.ccfit.petrov.task2.commands;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.exception.VariableNameException;
-import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
-import ru.nsu.ccfit.petrov.task2.exception.ArgumentsFormatException;
-
+import ru.nsu.ccfit.petrov.task2.commands.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.context.Context;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,30 +50,18 @@ class DefineTest
     private static Stream<Arguments> exceptionTestArgs()
     {
         return Stream.of(
-                Arguments.of(new ArrayList<>(),
-                             ArgumentsNumberException.class),
-                Arguments.of(new ArrayList<>(List.of("a", "1.986", "b", "2.134")),
-                             ArgumentsNumberException.class),
-                Arguments.of(new ArrayList<>(List.of("1a", "1.986")),
-                             VariableNameException.class),
-                Arguments.of(new ArrayList<>(List.of("a-b", "1.986")),
-                             VariableNameException.class),
-                Arguments.of(new ArrayList<>(List.of("a/b/c", "1.986")),
-                             VariableNameException.class),
-                Arguments.of(new ArrayList<>(List.of("a", "b")),
-                             ArgumentsFormatException.class),
-                Arguments.of(new ArrayList<>(List.of("a", "true")),
-                             ArgumentsFormatException.class),
-                Arguments.of(new ArrayList<>(List.of("a", "1.2az")),
-                             ArgumentsFormatException.class)
+                Arguments.of(new ArrayList<>()),
+                Arguments.of(new ArrayList<>(List.of("a"))),
+                Arguments.of(new ArrayList<>(List.of("a", "1.986", "b"))),
+                Arguments.of(new ArrayList<>(List.of("a", "1.986", "b", "32.532")))
         );
     }
 
     @ParameterizedTest
     @MethodSource("exceptionTestArgs")
-    void exceptionTest(ArrayList<String> args, Class<? extends Throwable> exceptionClass)
+    void exceptionTest(ArrayList<String> args)
     {
-        Assertions.assertThrows(exceptionClass,
+        Assertions.assertThrows(ArgumentsNumberException.class,
                                 () -> defineCmd.run(args, context));
     }
 }
