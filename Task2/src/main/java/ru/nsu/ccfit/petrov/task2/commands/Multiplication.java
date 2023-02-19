@@ -6,6 +6,9 @@ import ru.nsu.ccfit.petrov.task2.context.exception.EmptyStackException;
 
 import java.util.List;
 
+/**
+ * Class {@code Multiplication} implements multiplication operation
+ */
 public class Multiplication
     implements Command
 {

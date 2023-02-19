@@ -5,6 +5,9 @@ import ru.nsu.ccfit.petrov.task2.context.Context;
 
 import java.util.List;
 
+/**
+ * Class {@code Define} implements command to add variables to calculator context
+ */
 public class Define
         implements Command
 {

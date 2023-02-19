@@ -9,10 +9,18 @@ import ru.nsu.ccfit.petrov.task2.creator.exception.ResourceException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Class {@code CommandCreator} creates available commands defined in resource file {@code commands.properties}
+ */
 public class CommandCreator
 {
     private final Properties properties;
 
+    /**
+     * Create new {@code CommandCreator}.
+     * @throws ClassLoaderException class {@code Main} is not loaded
+     * @throws ResourceException    resource file {@code commands.properties} is not loaded
+     */
     public CommandCreator()
     {
         ClassLoader classLoader;
@@ -39,6 +47,13 @@ public class CommandCreator
         }
     }
 
+    /**
+     * Create command
+     *
+     * @param commandName command name
+     * @return available commands defined in resource file {@code commands.properties}
+     * @throws CommandNotCreatedException command is not created
+     */
     public Command create(String commandName)
     {
         try

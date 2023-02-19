@@ -6,6 +6,9 @@ import ru.nsu.ccfit.petrov.task2.context.exception.EmptyStackException;
 
 import java.util.List;
 
+/**
+ * Class {@code Subtraction} implements subtraction operation
+ */
 public class Subtraction
     implements Command
 {

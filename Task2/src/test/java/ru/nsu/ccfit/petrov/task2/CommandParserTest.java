@@ -32,6 +32,6 @@ class CommandParserTest
         cmdParser.parse(line);
 
         Assertions.assertEquals(name, cmdParser.getCommandName());
-        Assertions.assertEquals(args, cmdParser.getArgs());
+        Assertions.assertEquals(args, cmdParser.getCommandArgs());
     }
 }

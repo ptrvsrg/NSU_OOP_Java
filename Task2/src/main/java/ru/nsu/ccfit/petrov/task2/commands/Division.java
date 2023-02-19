@@ -7,6 +7,9 @@ import ru.nsu.ccfit.petrov.task2.context.exception.EmptyStackException;
 
 import java.util.List;
 
+/**
+ * Class {@code Division} implements division operation
+ */
 public class Division
     implements Command
 {

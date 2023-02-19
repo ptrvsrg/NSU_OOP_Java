@@ -6,6 +6,9 @@ import ru.nsu.ccfit.petrov.task2.context.Context;
 
 import java.util.List;
 
+/**
+ * Class {@code SquareRoot} implements square root operation
+ */
 public class SquareRoot
         implements Command
 {

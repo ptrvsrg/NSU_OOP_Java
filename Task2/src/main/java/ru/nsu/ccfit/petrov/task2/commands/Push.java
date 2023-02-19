@@ -5,6 +5,9 @@ import ru.nsu.ccfit.petrov.task2.context.Context;
 
 import java.util.List;
 
+/**
+ * Class {@code Push} implements command to push values onto stack of calculator context
+ */
 public class Push
     implements Command
 {
