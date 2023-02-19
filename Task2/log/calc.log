@@ -1,132 +1,124 @@
-2023-02-12 17:00:32:0503 INFO  - Start
-2023-02-12 17:00:32:0505 INFO  - Parse command line arguments
-2023-02-12 17:00:32:0520 INFO  - Launch calculator
-2023-02-12 17:00:32:0521 INFO  - Create calculator context
-2023-02-12 17:00:32:0523 INFO  - Create parser of lines with commands
-2023-02-12 17:00:32:0525 INFO  - Create command creator
-2023-02-12 17:00:32:0528 INFO  - Start reading lines with commands from input stream
-2023-02-12 17:00:32:0529 INFO  - Parse read line
-2023-02-12 17:00:32:0536 INFO  - Parse read line
-2023-02-12 17:00:32:0537 INFO  - Parse read line
-2023-02-12 17:00:32:0552 INFO  - Create command "DEFINE"
-2023-02-12 17:00:32:0555 INFO  - Launch command "DEFINE"
-2023-02-12 17:00:32:0564 INFO  - Parse read line
-2023-02-12 17:00:32:0564 INFO  - Create command "DEFINE"
-2023-02-12 17:00:32:0565 INFO  - Launch command "DEFINE"
-2023-02-12 17:00:32:0565 INFO  - Parse read line
-2023-02-12 17:00:32:0565 INFO  - Create command "DEFINE"
-2023-02-12 17:00:32:0566 INFO  - Launch command "DEFINE"
-2023-02-12 17:00:32:0566 INFO  - Parse read line
-2023-02-12 17:00:32:0566 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0567 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0568 INFO  - Parse read line
-2023-02-12 17:00:32:0568 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0569 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0569 INFO  - Parse read line
-2023-02-12 17:00:32:0569 INFO  - Create command "*"
-2023-02-12 17:00:32:0570 INFO  - Launch command "*"
-2023-02-12 17:00:32:0571 INFO  - Parse read line
-2023-02-12 17:00:32:0572 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0572 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0572 INFO  - Parse read line
-2023-02-12 17:00:32:0573 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0573 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0573 INFO  - Parse read line
-2023-02-12 17:00:32:0574 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0574 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0574 INFO  - Parse read line
-2023-02-12 17:00:32:0575 INFO  - Create command "*"
-2023-02-12 17:00:32:0575 INFO  - Launch command "*"
-2023-02-12 17:00:32:0575 INFO  - Parse read line
-2023-02-12 17:00:32:0575 INFO  - Create command "*"
-2023-02-12 17:00:32:0576 INFO  - Launch command "*"
-2023-02-12 17:00:32:0576 INFO  - Parse read line
-2023-02-12 17:00:32:0576 INFO  - Create command "-"
-2023-02-12 17:00:32:0577 INFO  - Launch command "-"
-2023-02-12 17:00:32:0578 INFO  - Parse read line
-2023-02-12 17:00:32:0578 INFO  - Create command "SQRT"
-2023-02-12 17:00:32:0580 INFO  - Launch command "SQRT"
-2023-02-12 17:00:32:0580 INFO  - Parse read line
-2023-02-12 17:00:32:0581 INFO  - Create command "+"
-2023-02-12 17:00:32:0582 INFO  - Launch command "+"
-2023-02-12 17:00:32:0583 WARN  - 
-ru.nsu.ccfit.petrov.task2.exception.EnoughStackValuesException: Enough values on stack
-	at ru.nsu.ccfit.petrov.task2.command.Addition.run(Addition.java:32)
-	at ru.nsu.ccfit.petrov.task2.Calculator.run(Calculator.java:68)
-	at ru.nsu.ccfit.petrov.task2.Main.main(Main.java:41)
-2023-02-12 17:00:32:0587 INFO  - Parse read line
-2023-02-12 17:00:32:0588 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0588 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0588 INFO  - Parse read line
-2023-02-12 17:00:32:0589 INFO  - Create command "-"
-2023-02-12 17:00:32:0589 INFO  - Launch command "-"
-2023-02-12 17:00:32:0589 INFO  - Parse read line
-2023-02-12 17:00:32:0589 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0589 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0590 INFO  - Parse read line
-2023-02-12 17:00:32:0590 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0590 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0590 INFO  - Parse read line
-2023-02-12 17:00:32:0590 INFO  - Create command "*"
-2023-02-12 17:00:32:0590 INFO  - Launch command "*"
-2023-02-12 17:00:32:0591 INFO  - Parse read line
-2023-02-12 17:00:32:0591 INFO  - Create command "/"
-2023-02-12 17:00:32:0592 INFO  - Launch command "/"
-2023-02-12 17:00:32:0592 INFO  - Parse read line
-2023-02-12 17:00:32:0592 INFO  - Create command "PRINT"
-2023-02-12 17:00:32:0593 INFO  - Launch command "PRINT"
-2023-02-12 17:00:32:0596 INFO  - Parse read line
-2023-02-12 17:00:32:0596 INFO  - Parse read line
-2023-02-12 17:00:32:0597 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0597 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0597 INFO  - Parse read line
-2023-02-12 17:00:32:0598 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0598 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0598 INFO  - Parse read line
-2023-02-12 17:00:32:0598 INFO  - Create command "*"
-2023-02-12 17:00:32:0598 INFO  - Launch command "*"
-2023-02-12 17:00:32:0598 INFO  - Parse read line
-2023-02-12 17:00:32:0599 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0599 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0599 INFO  - Parse read line
-2023-02-12 17:00:32:0599 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0599 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0599 INFO  - Parse read line
-2023-02-12 17:00:32:0600 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0600 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0600 INFO  - Parse read line
-2023-02-12 17:00:32:0600 INFO  - Create command "*"
-2023-02-12 17:00:32:0600 INFO  - Launch command "*"
-2023-02-12 17:00:32:0600 INFO  - Parse read line
-2023-02-12 17:00:32:0600 INFO  - Create command "*"
-2023-02-12 17:00:32:0601 INFO  - Launch command "*"
-2023-02-12 17:00:32:0601 INFO  - Parse read line
-2023-02-12 17:00:32:0601 INFO  - Create command "-"
-2023-02-12 17:00:32:0601 INFO  - Launch command "-"
-2023-02-12 17:00:32:0601 INFO  - Parse read line
-2023-02-12 17:00:32:0601 INFO  - Create command "SQRT"
-2023-02-12 17:00:32:0601 INFO  - Launch command "SQRT"
-2023-02-12 17:00:32:0601 INFO  - Parse read line
-2023-02-12 17:00:32:0602 INFO  - Create command "PUSH"
-2023-02-12 17:00:32:0602 INFO  - Launch command "PUSH"
-2023-02-12 17:00:32:0602 INFO  - Parse read line
-2023-02-12 17:00:32:0602 INFO  - Create command "/"
-2023-02-12 17:00:32:0602 INFO  - Launch command "/"
-2023-02-12 17:00:32:0602 INFO  - Parse read line
-2023-02-12 17:00:32:0602 INFO  - Create command "-"
-2023-02-12 17:00:32:0602 INFO  - Launch command "-"
-2023-02-12 17:00:32:0603 INFO  - Parse read line
-2023-02-12 17:00:32:0603 INFO  - Create command "PRINT"
-2023-02-12 17:00:32:0603 INFO  - Launch command "PRINT"
-2023-02-12 17:00:32:0603 INFO  - Parse read line
-2023-02-12 17:00:32:0603 INFO  - Create command "POP"
-2023-02-12 17:00:32:0604 INFO  - Launch command "POP"
-2023-02-12 17:00:32:0605 INFO  - Parse read line
-2023-02-12 17:00:32:0605 INFO  - Create command "PRINT"
-2023-02-12 17:00:32:0605 INFO  - Launch command "PRINT"
-2023-02-12 17:00:32:0605 WARN  - 
-ru.nsu.ccfit.petrov.task2.exception.EnoughStackValuesException: Enough values on stack
-	at ru.nsu.ccfit.petrov.task2.command.Print.run(Print.java:29)
-	at ru.nsu.ccfit.petrov.task2.Calculator.run(Calculator.java:68)
-	at ru.nsu.ccfit.petrov.task2.Main.main(Main.java:41)
-2023-02-12 17:00:32:0606 INFO  - Finish
+2023-02-19 18:36:33:0470 INFO  - Parse command line arguments
+2023-02-19 18:36:33:0480 INFO  - Create calculator
+2023-02-19 18:36:33:0481 INFO  - Launch calculator
+2023-02-19 18:36:33:0481 INFO  - Create calculator context
+2023-02-19 18:36:33:0484 INFO  - Create parser of lines with commands
+2023-02-19 18:36:33:0484 INFO  - Create command creator
+2023-02-19 18:36:33:0487 INFO  - Start reading lines with commands from input stream
+2023-02-19 18:36:33:0488 INFO  - Parse read line
+2023-02-19 18:36:33:0494 INFO  - Parse read line
+2023-02-19 18:36:33:0494 INFO  - Parse read line
+2023-02-19 18:36:33:0506 INFO  - Create command "DEFINE"
+2023-02-19 18:36:33:0508 INFO  - Launch command "DEFINE"
+2023-02-19 18:36:33:0513 INFO  - Parse read line
+2023-02-19 18:36:33:0513 INFO  - Create command "DEFINE"
+2023-02-19 18:36:33:0513 INFO  - Launch command "DEFINE"
+2023-02-19 18:36:33:0513 INFO  - Parse read line
+2023-02-19 18:36:33:0513 INFO  - Create command "DEFINE"
+2023-02-19 18:36:33:0514 INFO  - Launch command "DEFINE"
+2023-02-19 18:36:33:0514 INFO  - Parse read line
+2023-02-19 18:36:33:0514 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0515 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0516 INFO  - Parse read line
+2023-02-19 18:36:33:0517 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0517 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0517 INFO  - Parse read line
+2023-02-19 18:36:33:0518 INFO  - Create command "*"
+2023-02-19 18:36:33:0518 INFO  - Launch command "*"
+2023-02-19 18:36:33:0518 INFO  - Parse read line
+2023-02-19 18:36:33:0518 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0519 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0519 INFO  - Parse read line
+2023-02-19 18:36:33:0519 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0519 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0519 INFO  - Parse read line
+2023-02-19 18:36:33:0519 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0519 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0520 INFO  - Parse read line
+2023-02-19 18:36:33:0520 INFO  - Create command "*"
+2023-02-19 18:36:33:0520 INFO  - Launch command "*"
+2023-02-19 18:36:33:0520 INFO  - Parse read line
+2023-02-19 18:36:33:0520 INFO  - Create command "*"
+2023-02-19 18:36:33:0520 INFO  - Launch command "*"
+2023-02-19 18:36:33:0521 INFO  - Parse read line
+2023-02-19 18:36:33:0521 INFO  - Create command "-"
+2023-02-19 18:36:33:0522 INFO  - Launch command "-"
+2023-02-19 18:36:33:0522 INFO  - Parse read line
+2023-02-19 18:36:33:0523 INFO  - Create command "SQRT"
+2023-02-19 18:36:33:0523 INFO  - Launch command "SQRT"
+2023-02-19 18:36:33:0524 INFO  - Parse read line
+2023-02-19 18:36:33:0524 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0524 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0525 INFO  - Parse read line
+2023-02-19 18:36:33:0525 INFO  - Create command "-"
+2023-02-19 18:36:33:0525 INFO  - Launch command "-"
+2023-02-19 18:36:33:0525 INFO  - Parse read line
+2023-02-19 18:36:33:0525 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0525 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0525 INFO  - Parse read line
+2023-02-19 18:36:33:0526 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0526 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0526 INFO  - Parse read line
+2023-02-19 18:36:33:0526 INFO  - Create command "*"
+2023-02-19 18:36:33:0526 INFO  - Launch command "*"
+2023-02-19 18:36:33:0526 INFO  - Parse read line
+2023-02-19 18:36:33:0526 INFO  - Create command "/"
+2023-02-19 18:36:33:0527 INFO  - Launch command "/"
+2023-02-19 18:36:33:0527 INFO  - Parse read line
+2023-02-19 18:36:33:0528 INFO  - Create command "PRINT"
+2023-02-19 18:36:33:0528 INFO  - Launch command "PRINT"
+2023-02-19 18:36:33:0529 INFO  - Parse read line
+2023-02-19 18:36:33:0529 INFO  - Parse read line
+2023-02-19 18:36:33:0529 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0529 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0529 INFO  - Parse read line
+2023-02-19 18:36:33:0530 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0530 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0530 INFO  - Parse read line
+2023-02-19 18:36:33:0530 INFO  - Create command "*"
+2023-02-19 18:36:33:0530 INFO  - Launch command "*"
+2023-02-19 18:36:33:0530 INFO  - Parse read line
+2023-02-19 18:36:33:0530 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0530 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0531 INFO  - Parse read line
+2023-02-19 18:36:33:0531 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0531 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0531 INFO  - Parse read line
+2023-02-19 18:36:33:0531 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0531 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0531 INFO  - Parse read line
+2023-02-19 18:36:33:0531 INFO  - Create command "*"
+2023-02-19 18:36:33:0532 INFO  - Launch command "*"
+2023-02-19 18:36:33:0532 INFO  - Parse read line
+2023-02-19 18:36:33:0532 INFO  - Create command "*"
+2023-02-19 18:36:33:0532 INFO  - Launch command "*"
+2023-02-19 18:36:33:0532 INFO  - Parse read line
+2023-02-19 18:36:33:0533 INFO  - Create command "-"
+2023-02-19 18:36:33:0533 INFO  - Launch command "-"
+2023-02-19 18:36:33:0533 INFO  - Parse read line
+2023-02-19 18:36:33:0533 INFO  - Create command "SQRT"
+2023-02-19 18:36:33:0533 INFO  - Launch command "SQRT"
+2023-02-19 18:36:33:0533 INFO  - Parse read line
+2023-02-19 18:36:33:0533 INFO  - Create command "PUSH"
+2023-02-19 18:36:33:0533 INFO  - Launch command "PUSH"
+2023-02-19 18:36:33:0534 INFO  - Parse read line
+2023-02-19 18:36:33:0534 INFO  - Create command "/"
+2023-02-19 18:36:33:0534 INFO  - Launch command "/"
+2023-02-19 18:36:33:0534 INFO  - Parse read line
+2023-02-19 18:36:33:0534 INFO  - Create command "-"
+2023-02-19 18:36:33:0534 INFO  - Launch command "-"
+2023-02-19 18:36:33:0534 INFO  - Parse read line
+2023-02-19 18:36:33:0534 INFO  - Create command "PRINT"
+2023-02-19 18:36:33:0535 INFO  - Launch command "PRINT"
+2023-02-19 18:36:33:0535 INFO  - Parse read line
+2023-02-19 18:36:33:0535 INFO  - Create command "POP"
+2023-02-19 18:36:33:0535 INFO  - Launch command "POP"
+2023-02-19 18:36:33:0536 INFO  - Parse read line
+2023-02-19 18:36:33:0536 INFO  - Create command "PRINT"
+2023-02-19 18:36:33:0536 INFO  - Launch command "PRINT"
+2023-02-19 18:36:33:0542 WARN  - Exception: 
+ru.nsu.ccfit.petrov.task2.context.exception.EmptyStackException: Context exception: Empty stack
+	at ru.nsu.ccfit.petrov.task2.context.Context.peekStackValue(Context.java:79)
+	at ru.nsu.ccfit.petrov.task2.commands.Print.run(Print.java:22)
+	at ru.nsu.ccfit.petrov.task2.Calculator.run(Calculator.java:75)
+	at ru.nsu.ccfit.petrov.task2.Main.main(Main.java:46)
