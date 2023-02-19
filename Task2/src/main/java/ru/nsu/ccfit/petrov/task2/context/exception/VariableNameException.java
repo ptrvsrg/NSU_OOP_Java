@@ -1,7 +1,7 @@
-package ru.nsu.ccfit.petrov.task2.exception;
+package ru.nsu.ccfit.petrov.task2.context.exception;
 
 public class VariableNameException
-    extends RuntimeException
+    extends ContextException
 {
     public VariableNameException()
     {

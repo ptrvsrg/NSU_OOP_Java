@@ -1,7 +1,7 @@
-package ru.nsu.ccfit.petrov.task2.exception;
+package ru.nsu.ccfit.petrov.task2.creator.exception;
 
 public class ResourceException
-    extends RuntimeException
+    extends CreatorException
 {
     public ResourceException()
     {
