@@ -8,12 +8,10 @@ import java.io.*;
 
 public class Main
 {
-    private static final Logger logger = Logger.getRootLogger();
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args)
     {
-        logger.info("Start");
-
         // Parse command line arguments
         logger.info("Parse command line arguments");
         CommandLineParser commandLineParser = new CommandLineParser();
@@ -24,27 +22,33 @@ public class Main
         }
         catch (ParseException ex)
         {
-            logger.warn("", ex);
+            logger.error("Exception: ",
+                         ex);
+            return;
         }
 
         // Get i/o file names or null
         String inputFile = commandLineParser.getInput();
         String outputFile = commandLineParser.getOutput();
 
-        // Get file streams or standard console stream
-        try (InputStream in = (inputFile != null) ? new FileInputStream(inputFile) : System.in;
-             OutputStream out = (outputFile != null) ? new FileOutputStream(outputFile) : System.out)
+        // Get file streams or standard console stream and create calculator
+        logger.info("Create calculator");
+        try (InputStream in = (inputFile != null) ?
+                new FileInputStream(inputFile) :
+                System.in;
+             OutputStream out = (outputFile != null) ?
+                new FileOutputStream(outputFile) :
+                System.out;
+            Calculator calculator = new Calculator(in, out))
         {
             // Launch calculator
             logger.info("Launch calculator");
-            Calculator calculator = new Calculator(in, out);
             calculator.run();
         }
-        catch (IOException ex)
+        catch (Exception ex)
         {
-            logger.error("", ex);
+            logger.error("Exception: ",
+                         ex);
         }
-
-        logger.info("Finish");
     }
 }
