@@ -1,12 +1,12 @@
-package ru.nsu.ccfit.petrov.task2.command;
+package ru.nsu.ccfit.petrov.task2.commands;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
-import ru.nsu.ccfit.petrov.task2.exception.EnoughStackValuesException;
-import ru.nsu.ccfit.petrov.task2.exception.NegativeNumberException;
+import ru.nsu.ccfit.petrov.task2.commands.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.commands.exception.NegativeNumberException;
+import ru.nsu.ccfit.petrov.task2.context.Context;
+import ru.nsu.ccfit.petrov.task2.context.exception.EmptyStackException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +20,10 @@ class SquareRootTest
     void squareRootTest()
     {
         double num = 213.9402;
-        context.pushCalculatingValue(num);
+        context.pushStackValue(num);
         Assertions.assertDoesNotThrow(() -> squareRootCmd.run(new ArrayList <>(), context));
         Assertions.assertEquals(Math.sqrt(num),
-                                context.popCalculatingValue());
+                                context.popStackValue());
     }
 
     @Test
@@ -31,10 +31,16 @@ class SquareRootTest
     {
         Assertions.assertThrows(ArgumentsNumberException.class,
                                 () -> squareRootCmd.run(new ArrayList<>(List.of("1.34")), context));
-        Assertions.assertThrows(EnoughStackValuesException.class,
+
+        Assertions.assertThrows(EmptyStackException.class,
                                 () -> squareRootCmd.run(new ArrayList<>(), context));
-        context.pushCalculatingValue(-431.12);
+
+        context.pushStackValue(-431.12);
         Assertions.assertThrows(NegativeNumberException.class,
                                 () -> squareRootCmd.run(new ArrayList<>(), context));
+        Assertions.assertEquals(context.popStackValue(),
+                                -431.12);
+        Assertions.assertThrows(EmptyStackException.class,
+                                context::popStackValue);
     }
 }

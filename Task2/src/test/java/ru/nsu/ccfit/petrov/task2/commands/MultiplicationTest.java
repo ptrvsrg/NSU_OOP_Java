@@ -1,4 +1,4 @@
-package ru.nsu.ccfit.petrov.task2.command;
+package ru.nsu.ccfit.petrov.task2.commands;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -6,9 +6,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.exception.EnoughStackValuesException;
-import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.commands.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.context.Context;
+import ru.nsu.ccfit.petrov.task2.context.exception.EmptyStackException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +33,11 @@ class MultiplicationTest
     @MethodSource("multiplicationTestArgs")
     void multiplicationTest(Double multiplier1, Double multiplier2)
     {
-        context.pushCalculatingValue(multiplier1);
-        context.pushCalculatingValue(multiplier2);
+        context.pushStackValue(multiplier1);
+        context.pushStackValue(multiplier2);
         Assertions.assertDoesNotThrow(() -> multiplicationCmd.run(new ArrayList <>(), context));
         Assertions.assertEquals(multiplier1 * multiplier2,
-                                context.popCalculatingValue());
+                                context.popStackValue());
     }
 
     @Test
@@ -46,8 +46,12 @@ class MultiplicationTest
         Assertions.assertThrows(ArgumentsNumberException.class,
                                 () -> multiplicationCmd.run(new ArrayList<>(List.of("1.34")), context));
 
-        context.pushCalculatingValue(12.42);
-        Assertions.assertThrows(EnoughStackValuesException.class,
+        context.pushStackValue(12.42);
+        Assertions.assertThrows(EmptyStackException.class,
                                 () -> multiplicationCmd.run(new ArrayList<>(), context));
+        Assertions.assertEquals(context.popStackValue(),
+                                12.42);
+        Assertions.assertThrows(EmptyStackException.class,
+                                context::popStackValue);
     }
 }

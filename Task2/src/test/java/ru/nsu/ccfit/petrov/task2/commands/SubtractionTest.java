@@ -1,4 +1,4 @@
-package ru.nsu.ccfit.petrov.task2.command;
+package ru.nsu.ccfit.petrov.task2.commands;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -6,9 +6,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.exception.EnoughStackValuesException;
-import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.commands.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.context.Context;
+import ru.nsu.ccfit.petrov.task2.context.exception.EmptyStackException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +33,11 @@ class SubtractionTest
     @MethodSource("additionTestArgs")
     void additionTest(Double minuend, Double subtrahend)
     {
-        context.pushCalculatingValue(minuend);
-        context.pushCalculatingValue(subtrahend);
+        context.pushStackValue(minuend);
+        context.pushStackValue(subtrahend);
         Assertions.assertDoesNotThrow(() -> subtractionCmd.run(new ArrayList <>(), context));
         Assertions.assertEquals(minuend - subtrahend,
-                                context.popCalculatingValue());
+                                context.popStackValue());
     }
 
     @Test
@@ -45,8 +45,16 @@ class SubtractionTest
     {
         Assertions.assertThrows(ArgumentsNumberException.class,
                                 () -> subtractionCmd.run(new ArrayList<>(List.of("1.34")), context));
-        context.pushCalculatingValue(12.43);
-        Assertions.assertThrows(EnoughStackValuesException.class,
+
+        Assertions.assertThrows(EmptyStackException.class,
                                 () -> subtractionCmd.run(new ArrayList<>(), context));
+
+        context.pushStackValue(12.43);
+        Assertions.assertThrows(EmptyStackException.class,
+                                () -> subtractionCmd.run(new ArrayList<>(), context));
+        Assertions.assertEquals(context.popStackValue(),
+                                12.43);
+        Assertions.assertThrows(EmptyStackException.class,
+                                context::popStackValue);
     }
 }

@@ -1,10 +1,10 @@
-package ru.nsu.ccfit.petrov.task2.command;
+package ru.nsu.ccfit.petrov.task2.commands;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import ru.nsu.ccfit.petrov.task2.Context;
-import ru.nsu.ccfit.petrov.task2.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.commands.exception.ArgumentsNumberException;
+import ru.nsu.ccfit.petrov.task2.context.Context;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,17 +17,11 @@ class PopTest
     @Test
     void popTest()
     {
-        context.pushCalculatingValue(1.1);
-        context.pushCalculatingValue(2.2);
-
-        // Non-empty stack
+        context.pushStackValue(1.1);
+        context.pushStackValue(2.2);
         Assertions.assertDoesNotThrow(() -> popCmd.run(new ArrayList<>(), context));
         Assertions.assertEquals(1.1,
-                                context.popCalculatingValue());
-
-        // Empty stack
-        Assertions.assertDoesNotThrow(() -> popCmd.run(new ArrayList<>(), context));
-        Assertions.assertNull(context.popCalculatingValue());
+                                context.popStackValue());
     }
 
     @Test
