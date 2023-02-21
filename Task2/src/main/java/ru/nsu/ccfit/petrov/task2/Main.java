@@ -39,7 +39,7 @@ public class Main
              OutputStream out = (outputFile != null) ?
                 new FileOutputStream(outputFile) :
                 System.out;
-            Calculator calculator = new Calculator(in, out))
+             Calculator calculator = new Calculator(in, out))
         {
             // Launch calculator
             logger.info("Launch calculator");
