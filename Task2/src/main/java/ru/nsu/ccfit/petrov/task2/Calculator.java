@@ -92,18 +92,11 @@ public class Calculator
         }
     }
 
-    private void close(Closeable obj)
-            throws IOException
-    {
-        if (obj != null)
-            obj.close();
-    }
-
     @Override
     public void close()
             throws IOException
     {
-        close(in);
-        close(out);
+        in.close();
+        out.close();
     }
 }
