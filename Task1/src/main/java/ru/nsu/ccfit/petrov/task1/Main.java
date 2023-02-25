@@ -6,18 +6,15 @@ import java.io.*;
 
 public class Main
 {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         CommandLineParser clParser = new CommandLineParser();
 
-        try
-        {
+        try {
             if (!clParser.parse(args))
                 return;
         }
-        catch (ParseException ex)
-        {
-            ex.printStackTrace(System.err);
+        catch (ParseException ex) {
+            System.err.println(ex);
             return;
         }
 
@@ -26,15 +23,13 @@ public class Main
 
         try (WordCollector wordCollector = new WordCollector(new FileReader(inputFile));
              CsvBuilder csvBuilder = new CsvBuilder(new FileWriter(outputFile,
-                                                                   false)))
-        {
+                                                                   false))) {
             SortedHistogram histogram = wordCollector.getHistogram();
             csvBuilder.build(histogram,
                              wordCollector.getWordCount());
         }
-        catch (IOException ex)
-        {
-            ex.printStackTrace(System.err);
+        catch (IOException ex) {
+            System.err.println(ex);
         }
     }
 }

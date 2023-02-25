@@ -10,33 +10,27 @@ public class WordCollector
     private long wordCount = 0;
     private final InputStreamReader in;
 
-    public WordCollector(InputStreamReader inputStreamReader)
-    {
+    public WordCollector(InputStreamReader inputStreamReader) {
         in = inputStreamReader;
     }
 
-    public long getWordCount()
-    {
+    public long getWordCount() {
         return wordCount;
     }
 
-    private void addWord(SortedHistogram histogram,
-                         StringBuilder word)
-    {
+    private void addWord(SortedHistogram histogram, StringBuilder word) {
         histogram.add(new String(word).toLowerCase());
         word.setLength(0);
         ++wordCount;
     }
 
     public SortedHistogram getHistogram()
-            throws IOException
-    {
+            throws IOException {
         SortedHistogram histogram = new SortedHistogram();
         StringBuilder word = new StringBuilder();
         int symCode;
 
-        while ((symCode = in.read()) != -1)
-        {
+        while ((symCode = in.read()) != -1) {
             if (Character.isLetterOrDigit(symCode))
                 word.append((char) symCode);
             else if (word.length() != 0)
@@ -53,8 +47,7 @@ public class WordCollector
 
     @Override
     public void close()
-            throws IOException
-    {
+            throws IOException {
         in.close();
     }
 }

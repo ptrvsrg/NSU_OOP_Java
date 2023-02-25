@@ -7,8 +7,7 @@ public class CommandLineParser
     private CommandLine commandLine;
 
     public boolean parse(String[] args)
-            throws ParseException
-    {
+            throws ParseException {
         // Add help option
         Options opts = new Options();
         opts.addOption(Option.builder()
@@ -46,8 +45,7 @@ public class CommandLineParser
                              .build());
 
         // Print help
-        if (args.length == 0 || commandLine.hasOption("help"))
-        {
+        if (args.length == 0 || commandLine.hasOption("help")) {
             HelpFormatter helpFormatter = new HelpFormatter();
             helpFormatter.printHelp("app",
                                     opts,
@@ -61,13 +59,11 @@ public class CommandLineParser
         return true;
     }
 
-    public String getInput()
-    {
+    public String getInput() {
         return commandLine.getOptionValue("input");
     }
 
-    public String getOutput()
-    {
+    public String getOutput() {
         return commandLine.getOptionValue("output");
     }
 }

@@ -9,18 +9,14 @@ public class CsvBuilder
 {
     private final OutputStreamWriter out;
 
-    public CsvBuilder(OutputStreamWriter outputStreamWriter)
-    {
+    public CsvBuilder(OutputStreamWriter outputStreamWriter) {
         out = outputStreamWriter;
     }
 
-    public void build(SortedHistogram histogram,
-                      long wordCount)
-            throws IOException
-    {
+    public void build(SortedHistogram histogram, long wordCount)
+            throws IOException {
         out.write("Word,Frequency,Frequency percentage\n");
-        for (CountedWord entry : histogram)
-        {
+        for (CountedWord entry : histogram) {
             double frequencyPercentage = (double) entry.getCount() * 100 / wordCount;
             out.write(entry.getWord() + ",");
             out.write(entry.getCount() + ",");
@@ -31,8 +27,7 @@ public class CsvBuilder
 
     @Override
     public void close()
-            throws IOException
-    {
+            throws IOException {
         out.close();
     }
 }

@@ -10,10 +10,9 @@ import java.util.stream.Stream;
 
 class SortedHistogramTest
 {
-    private static Stream <Arguments> sortedHistogramTestArgs()
-    {
-        return Stream.of(Arguments.of(new ArrayList <>(),
-                                      new ArrayList <>()),
+    private static Stream<Arguments> sortedHistogramTestArgs() {
+        return Stream.of(Arguments.of(new ArrayList<>(),
+                                      new ArrayList<>()),
                          Arguments.of(List.of(new CountedWord("a",
                                                               3L),
                                               new CountedWord("c",
@@ -30,20 +29,17 @@ class SortedHistogramTest
 
     @ParameterizedTest
     @MethodSource("sortedHistogramTestArgs")
-    void sortedHistogramTest(List <CountedWord> actual,
-                             List <CountedWord> expected)
-    {
+    void sortedHistogramTest(List<CountedWord> actual, List<CountedWord> expected) {
         SortedHistogram histogram = new SortedHistogram();
 
         for (CountedWord entry : actual)
             for (int i = 0; i < entry.getCount(); ++i)
                 histogram.add(entry.getWord());
 
-        Iterator <CountedWord> actualIter = histogram.iterator();
-        Iterator <CountedWord> expectedIter = expected.iterator();
+        Iterator<CountedWord> actualIter = histogram.iterator();
+        Iterator<CountedWord> expectedIter = expected.iterator();
 
-        while (actualIter.hasNext() && expectedIter.hasNext())
-        {
+        while (actualIter.hasNext() && expectedIter.hasNext()) {
             CountedWord actualEntry = actualIter.next();
             CountedWord expectedEntry = expectedIter.next();
             Assertions.assertEquals(actualEntry.getCount(),

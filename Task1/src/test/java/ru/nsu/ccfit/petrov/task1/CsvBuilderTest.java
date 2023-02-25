@@ -10,8 +10,7 @@ class CsvBuilderTest
 {
 
     @Test
-    void buildTest()
-    {
+    void buildTest() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         CsvBuilder csvBuilder = new CsvBuilder(new OutputStreamWriter(out));
         SortedHistogram histogram = new SortedHistogram();

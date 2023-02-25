@@ -3,14 +3,12 @@ package ru.nsu.ccfit.petrov.task1;
 import java.util.*;
 
 public class SortedHistogram
-        implements Iterable <CountedWord>
+        implements Iterable<CountedWord>
 {
-    private final SortedSet <CountedWord> histogram;
+    private final SortedSet<CountedWord> histogram;
 
-    public SortedHistogram()
-    {
-        Comparator <CountedWord> comparator = (o1, o2) ->
-        {
+    public SortedHistogram() {
+        Comparator<CountedWord> comparator = (o1, o2) -> {
             if (o1.getCount()
                   .equals(o2.getCount()))
                 return o1.getWord()
@@ -20,15 +18,13 @@ public class SortedHistogram
                      .compareTo(o1.getCount());
         };
 
-        histogram = new TreeSet <>(comparator);
+        histogram = new TreeSet<>(comparator);
     }
 
-    void add(String word)
-    {
+    void add(String word) {
         for (CountedWord entry : histogram)
             if (entry.getWord()
-                     .equals(word))
-            {
+                     .equals(word)) {
                 histogram.remove(entry);
                 entry.setCount(entry.getCount() + 1L);
                 histogram.add(entry);
@@ -40,8 +36,7 @@ public class SortedHistogram
     }
 
     @Override
-    public Iterator <CountedWord> iterator()
-    {
+    public Iterator<CountedWord> iterator() {
         return histogram.iterator();
     }
 }

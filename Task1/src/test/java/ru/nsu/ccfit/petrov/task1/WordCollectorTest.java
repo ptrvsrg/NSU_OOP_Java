@@ -15,8 +15,7 @@ import java.util.stream.Stream;
 class WordCollectorTest
 {
 
-    private static Stream <Arguments> getHistogramArgs()
-    {
+    private static Stream<Arguments> getHistogramArgs() {
         return Stream.of(Arguments.of(new InputStreamReader(new ByteArrayInputStream("a b c a b a".getBytes())),
                                       Arrays.asList("a",
                                                     "b",
@@ -25,8 +24,8 @@ class WordCollectorTest
                                                     2L,
                                                     1L)),
                          Arguments.of(new InputStreamReader(new ByteArrayInputStream("".getBytes())),
-                                      new ArrayList <String>(),
-                                      new ArrayList <Long>()),
+                                      new ArrayList<String>(),
+                                      new ArrayList<Long>()),
                          Arguments.of(new InputStreamReader(new ByteArrayInputStream("a A a bB c C1 43231".getBytes())),
                                       Arrays.asList("a",
                                                     "bb",
@@ -42,19 +41,14 @@ class WordCollectorTest
 
     @ParameterizedTest
     @MethodSource("getHistogramArgs")
-    void getHistogram(InputStreamReader reader,
-                      List <String> keys,
-                      List <Long> values)
-    {
+    void getHistogram(InputStreamReader reader, List<String> keys, List<Long> values) {
         WordCollector wordCollector = new WordCollector(reader);
         SortedHistogram actual = null;
 
-        try
-        {
+        try {
             actual = wordCollector.getHistogram();
         }
-        catch (IOException ex)
-        {
+        catch (IOException ex) {
             Assertions.fail(ex);
         }
 
@@ -63,11 +57,10 @@ class WordCollectorTest
             for (int j = 0; j < values.get(i); ++j)
                 expected.add(keys.get(i));
 
-        Iterator <CountedWord> actualIter = actual.iterator();
-        Iterator <CountedWord> expectedIter = expected.iterator();
+        Iterator<CountedWord> actualIter = actual.iterator();
+        Iterator<CountedWord> expectedIter = expected.iterator();
 
-        while (actualIter.hasNext() && expectedIter.hasNext())
-        {
+        while (actualIter.hasNext() && expectedIter.hasNext()) {
             CountedWord actualEntry = actualIter.next();
             CountedWord expectedEntry = expectedIter.next();
             Assertions.assertEquals(actualEntry.getCount(),
@@ -81,20 +74,17 @@ class WordCollectorTest
     }
 
     @Test
-    void getWordCount()
-    {
+    void getWordCount() {
         WordCollector wordCollector = new WordCollector(new InputStreamReader(new ByteArrayInputStream("a b c a b a".getBytes())));
 
-        try
-        {
+        try {
             wordCollector.getHistogram();
         }
-        catch (IOException ex)
-        {
+        catch (IOException ex) {
             Assertions.fail(ex);
         }
 
-        Assertions.assertEquals(wordCollector.getWordCount(),
-                                6L);
+        Assertions.assertEquals(6L,
+                                wordCollector.getWordCount());
     }
 }
