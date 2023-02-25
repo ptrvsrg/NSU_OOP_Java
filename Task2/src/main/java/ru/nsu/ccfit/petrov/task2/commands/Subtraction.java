@@ -10,11 +10,10 @@ import java.util.List;
  * Class {@code Subtraction} implements subtraction operation
  */
 public class Subtraction
-    implements Command
+        implements Command
 {
     @Override
-    public void run(List <String> args, Context context)
-    {
+    public void run(List<String> args, Context context) {
         // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();
@@ -24,12 +23,10 @@ public class Subtraction
 
         // Pop addend1 from stack
         Double minuend;
-        try
-        {
+        try {
             minuend = context.popStackValue();
         }
-        catch (EmptyStackException ex)
-        {
+        catch (EmptyStackException ex) {
             // Push subtrahend onto stack
             context.pushStackValue(subtrahend);
             throw ex;

@@ -14,21 +14,21 @@ class PrintTest
     private final Print printCmd = new Print();
 
     @Test
-    void printTest()
-    {
+    void printTest() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         Context context = new Context(out);
         context.pushStackValue(1.1);
-        Assertions.assertDoesNotThrow(() -> printCmd.run(new ArrayList <>(), context));
-        Assertions.assertEquals(out.toString(),
-                                "1.1\n");
+        Assertions.assertDoesNotThrow(() -> printCmd.run(new ArrayList<>(),
+                                                         context));
+        Assertions.assertEquals("1.1\n",
+                                out.toString());
     }
 
     @Test
-    void exceptionTest()
-    {
+    void exceptionTest() {
         Context context = new Context(System.out);
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () -> printCmd.run(new ArrayList<>(List.of("a")), context));
+                                () -> printCmd.run(new ArrayList<>(List.of("a")),
+                                                   context));
     }
 }

@@ -9,11 +9,10 @@ import java.util.List;
  * Class {@code Push} implements command to push values onto stack of calculator context
  */
 public class Push
-    implements Command
+        implements Command
 {
     @Override
-    public void run(List <String> args, Context context)
-    {
+    public void run(List<String> args, Context context) {
         // Check args count
         if (args.size() != 1)
             throw new ArgumentsNumberException();

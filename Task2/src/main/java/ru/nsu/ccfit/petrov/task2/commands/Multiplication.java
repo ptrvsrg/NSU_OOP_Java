@@ -10,11 +10,10 @@ import java.util.List;
  * Class {@code Multiplication} implements multiplication operation
  */
 public class Multiplication
-    implements Command
+        implements Command
 {
     @Override
-    public void run(List <String> args, Context context)
-    {
+    public void run(List<String> args, Context context) {
         // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();
@@ -24,12 +23,10 @@ public class Multiplication
 
         // Pop multiplier1 from stack
         Double multiplier1;
-        try
-        {
+        try {
             multiplier1 = context.popStackValue();
         }
-        catch (EmptyStackException ex)
-        {
+        catch (EmptyStackException ex) {
             // Push divisor onto stack
             context.pushStackValue(multiplier2);
             throw ex;

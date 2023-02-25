@@ -19,38 +19,40 @@ class MultiplicationTest
     private final Context context = new Context(System.out);
     private final Multiplication multiplicationCmd = new Multiplication();
 
-    private static Stream <Arguments> multiplicationTestArgs()
-    {
-        return Stream.of(
-                Arguments.of(1.23, 23.54),
-                Arguments.of(1.23, -23.54),
-                Arguments.of(-1.23, 23.54),
-                Arguments.of(-1.23, -23.54)
-        );
+    private static Stream<Arguments> multiplicationTestArgs() {
+        return Stream.of(Arguments.of(1.23,
+                                      23.54),
+                         Arguments.of(1.23,
+                                      -23.54),
+                         Arguments.of(-1.23,
+                                      23.54),
+                         Arguments.of(-1.23,
+                                      -23.54));
     }
 
     @ParameterizedTest
     @MethodSource("multiplicationTestArgs")
-    void multiplicationTest(Double multiplier1, Double multiplier2)
-    {
+    void multiplicationTest(Double multiplier1, Double multiplier2) {
         context.pushStackValue(multiplier1);
         context.pushStackValue(multiplier2);
-        Assertions.assertDoesNotThrow(() -> multiplicationCmd.run(new ArrayList <>(), context));
+        Assertions.assertDoesNotThrow(() -> multiplicationCmd.run(new ArrayList<>(),
+                                                                  context));
         Assertions.assertEquals(multiplier1 * multiplier2,
                                 context.popStackValue());
     }
 
     @Test
-    void exceptionTest()
-    {
+    void exceptionTest() {
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () -> multiplicationCmd.run(new ArrayList<>(List.of("1.34")), context));
+                                () -> multiplicationCmd.run(new ArrayList<>(List.of("1.34")),
+                                                            context));
 
         context.pushStackValue(12.42);
         Assertions.assertThrows(EmptyStackException.class,
-                                () -> multiplicationCmd.run(new ArrayList<>(), context));
-        Assertions.assertEquals(context.popStackValue(),
-                                12.42);
+                                () -> multiplicationCmd.run(new ArrayList<>(),
+                                                            context));
+        Assertions.assertEquals(12.42,
+                                context.popStackValue());
         Assertions.assertThrows(EmptyStackException.class,
                                 context::popStackValue);
     }

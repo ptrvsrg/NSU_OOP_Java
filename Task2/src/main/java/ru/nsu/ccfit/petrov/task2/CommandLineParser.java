@@ -14,12 +14,11 @@ public class CommandLineParser
      *
      * @param args command line arguments
      * @return {@code false}, if option {@code help} is found,
-     *         otherwise {@code true}
+     * otherwise {@code true}
      * @throws ParseException exception during parsing command line arguments
      */
     public boolean parse(String[] args)
-            throws ParseException
-    {
+            throws ParseException {
         // Add available options
         Options opts = new Options();
         opts.addOption(Option.builder()
@@ -53,8 +52,7 @@ public class CommandLineParser
                                      args);
 
         // Print help
-        if (commandLine.hasOption("help"))
-        {
+        if (commandLine.hasOption("help")) {
             HelpFormatter helpFormatter = new HelpFormatter();
             helpFormatter.printHelp("calc",
                                     opts,
@@ -70,8 +68,7 @@ public class CommandLineParser
      *
      * @return argument of option {@code input} or {@code null}, if option {@code input} is not found
      */
-    public String getInput()
-    {
+    public String getInput() {
         return commandLine.getOptionValue("input");
     }
 
@@ -80,8 +77,7 @@ public class CommandLineParser
      *
      * @return argument of option {@code output} or {@code null}, if option {@code output} is not found
      */
-    public String getOutput()
-    {
+    public String getOutput() {
         return commandLine.getOptionValue("output");
     }
 }

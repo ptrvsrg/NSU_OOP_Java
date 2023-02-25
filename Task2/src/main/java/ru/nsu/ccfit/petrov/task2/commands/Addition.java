@@ -10,11 +10,10 @@ import java.util.List;
  * Class {@code Addition} implements addition operation
  */
 public class Addition
-    implements Command
+        implements Command
 {
     @Override
-    public void run(List <String> args, Context context)
-    {
+    public void run(List<String> args, Context context) {
         // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();
@@ -24,12 +23,10 @@ public class Addition
 
         // Pop addend1 from stack
         Double addend1;
-        try
-        {
+        try {
             addend1 = context.popStackValue();
         }
-        catch (EmptyStackException ex)
-        {
+        catch (EmptyStackException ex) {
             // Push addend2 onto stack
             context.pushStackValue(addend2);
             throw ex;

@@ -19,41 +19,44 @@ class SubtractionTest
     private final Context context = new Context(System.out);
     private final Subtraction subtractionCmd = new Subtraction();
 
-    private static Stream <Arguments> additionTestArgs()
-    {
-        return Stream.of(
-                Arguments.of(1.23, 23.54),
-                Arguments.of(1.23, -23.54),
-                Arguments.of(-1.23, 23.54),
-                Arguments.of(-1.23, -23.54)
-        );
+    private static Stream<Arguments> additionTestArgs() {
+        return Stream.of(Arguments.of(1.23,
+                                      23.54),
+                         Arguments.of(1.23,
+                                      -23.54),
+                         Arguments.of(-1.23,
+                                      23.54),
+                         Arguments.of(-1.23,
+                                      -23.54));
     }
 
     @ParameterizedTest
     @MethodSource("additionTestArgs")
-    void additionTest(Double minuend, Double subtrahend)
-    {
+    void additionTest(Double minuend, Double subtrahend) {
         context.pushStackValue(minuend);
         context.pushStackValue(subtrahend);
-        Assertions.assertDoesNotThrow(() -> subtractionCmd.run(new ArrayList <>(), context));
+        Assertions.assertDoesNotThrow(() -> subtractionCmd.run(new ArrayList<>(),
+                                                               context));
         Assertions.assertEquals(minuend - subtrahend,
                                 context.popStackValue());
     }
 
     @Test
-    void exceptionTest()
-    {
+    void exceptionTest() {
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () -> subtractionCmd.run(new ArrayList<>(List.of("1.34")), context));
+                                () -> subtractionCmd.run(new ArrayList<>(List.of("1.34")),
+                                                         context));
 
         Assertions.assertThrows(EmptyStackException.class,
-                                () -> subtractionCmd.run(new ArrayList<>(), context));
+                                () -> subtractionCmd.run(new ArrayList<>(),
+                                                         context));
 
         context.pushStackValue(12.43);
         Assertions.assertThrows(EmptyStackException.class,
-                                () -> subtractionCmd.run(new ArrayList<>(), context));
-        Assertions.assertEquals(context.popStackValue(),
-                                12.43);
+                                () -> subtractionCmd.run(new ArrayList<>(),
+                                                         context));
+        Assertions.assertEquals(12.43,
+                                context.popStackValue());
         Assertions.assertThrows(EmptyStackException.class,
                                 context::popStackValue);
     }

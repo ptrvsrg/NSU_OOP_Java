@@ -10,18 +10,15 @@ public class Main
 {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // Parse command line arguments
         logger.info("Parse command line arguments");
         CommandLineParser commandLineParser = new CommandLineParser();
-        try
-        {
+        try {
             if (!commandLineParser.parse(args))
                 return;
         }
-        catch (ParseException ex)
-        {
+        catch (ParseException ex) {
             logger.error("Exception: ",
                          ex);
             return;
@@ -34,19 +31,17 @@ public class Main
         // Get file streams or standard console stream and create calculator
         logger.info("Create calculator");
         try (InputStream in = (inputFile != null) ?
-                new FileInputStream(inputFile) :
-                System.in;
+                              new FileInputStream(inputFile) :
+                              System.in;
              OutputStream out = (outputFile != null) ?
-                new FileOutputStream(outputFile) :
-                System.out;
-             Calculator calculator = new Calculator(in, out))
-        {
+                                new FileOutputStream(outputFile) :
+                                System.out;
+             Calculator calculator = new Calculator(in, out)) {
             // Launch calculator
             logger.info("Launch calculator");
             calculator.run();
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             logger.error("Exception: ",
                          ex);
         }

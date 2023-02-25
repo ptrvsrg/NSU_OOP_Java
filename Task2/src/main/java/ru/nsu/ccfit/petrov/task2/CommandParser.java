@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class CommandParser
 {
     private String commandName = null;
-    private ArrayList<String> commandArgs = new ArrayList <>();
+    private ArrayList<String> commandArgs = new ArrayList<>();
 
     /**
      * Extract command name and its arguments from input line.
@@ -20,15 +20,12 @@ public class CommandParser
      * Assign {@code null} to field {@code commandName} and empty {@code ArrayList} to field {@code commandArgs}
      * if required data is not found in input line
      *
-     * @param line
-     *        Input line
+     * @param line Input line
      */
-    public void parse(String line)
-    {
-        if (line == null)
-        {
+    public void parse(String line) {
+        if (line == null) {
             commandName = null;
-            commandArgs = new ArrayList <>();
+            commandArgs = new ArrayList<>();
             return;
         }
 
@@ -39,17 +36,15 @@ public class CommandParser
 
         // Divide command into words
         Pattern wordPattern = Pattern.compile("\\s+");
-        commandArgs = new ArrayList <>(List.of(wordPattern.split(command)));
+        commandArgs = new ArrayList<>(List.of(wordPattern.split(command)));
 
         // Split into command name and command arguments
-        try
-        {
+        try {
             commandName = commandArgs.remove(0);
             if (commandName.equals(""))
                 commandName = null;
         }
-        catch (IndexOutOfBoundsException ex)
-        {
+        catch (IndexOutOfBoundsException ex) {
             commandName = null;
         }
     }
@@ -59,8 +54,7 @@ public class CommandParser
      *
      * @return Command name or {@code null} if data is not found in input line.
      */
-    public String getCommandName()
-    {
+    public String getCommandName() {
         return commandName;
     }
 
@@ -69,8 +63,7 @@ public class CommandParser
      *
      * @return Argument list
      */
-    public List <String> getCommandArgs()
-    {
+    public List<String> getCommandArgs() {
         return commandArgs;
     }
 }

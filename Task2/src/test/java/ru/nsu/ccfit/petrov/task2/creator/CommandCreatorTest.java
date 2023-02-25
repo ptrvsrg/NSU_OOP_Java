@@ -14,49 +14,59 @@ class CommandCreatorTest
 {
     CommandCreator cmdCreator = new CommandCreator();
 
-    private static Stream<Arguments> createTestArgs()
-    {
-        return Stream.of(
-                Arguments.of("+", Addition.class),
-                Arguments.of("-", Subtraction.class),
-                Arguments.of("*", Multiplication.class),
-                Arguments.of("/", Division.class),
-                Arguments.of("POP", Pop.class),
-                Arguments.of("PUSH", Push.class),
-                Arguments.of("SQRT", SquareRoot.class),
-                Arguments.of("PRINT", Print.class),
-                Arguments.of("DEFINE", Define.class),
-                Arguments.of("pop", Pop.class),
-                Arguments.of("push", Push.class),
-                Arguments.of("sqrt", SquareRoot.class),
-                Arguments.of("print", Print.class),
-                Arguments.of("define", Define.class)
-        );
+    private static Stream<Arguments> createTestArgs() {
+        return Stream.of(Arguments.of("+",
+                                      Addition.class),
+                         Arguments.of("-",
+                                      Subtraction.class),
+                         Arguments.of("*",
+                                      Multiplication.class),
+                         Arguments.of("/",
+                                      Division.class),
+                         Arguments.of("POP",
+                                      Pop.class),
+                         Arguments.of("PUSH",
+                                      Push.class),
+                         Arguments.of("SQRT",
+                                      SquareRoot.class),
+                         Arguments.of("PRINT",
+                                      Print.class),
+                         Arguments.of("DEFINE",
+                                      Define.class),
+                         Arguments.of("pop",
+                                      Pop.class),
+                         Arguments.of("push",
+                                      Push.class),
+                         Arguments.of("sqrt",
+                                      SquareRoot.class),
+                         Arguments.of("print",
+                                      Print.class),
+                         Arguments.of("define",
+                                      Define.class));
     }
 
     @ParameterizedTest
     @MethodSource("createTestArgs")
-    public void createTest(String cmdName, Class<? extends Command> cmdClass)
-    {
-        Assertions.assertDoesNotThrow(() -> Assertions.assertEquals(cmdCreator.create(cmdName).getClass(),
+    void createTest(String cmdName, Class<? extends Command> cmdClass) {
+        Assertions.assertDoesNotThrow(() -> Assertions.assertEquals(cmdCreator.create(cmdName)
+                                                                              .getClass(),
                                                                     cmdClass));
     }
 
-    private static Stream<Arguments> exceptionTestArgs()
-    {
-        return Stream.of(
-                Arguments.of(null, CommandNotCreatedException.class),
-                Arguments.of("", CommandNotCreatedException.class),
-                Arguments.of("%", CommandNotCreatedException.class),
-                Arguments.of("DELETE", CommandNotCreatedException.class)
-        );
+    private static Stream<Arguments> exceptionTestArgs() {
+        return Stream.of(Arguments.of(null,
+                                      CommandNotCreatedException.class),
+                         Arguments.of("",
+                                      CommandNotCreatedException.class),
+                         Arguments.of("%",
+                                      CommandNotCreatedException.class),
+                         Arguments.of("DELETE",
+                                      CommandNotCreatedException.class));
     }
 
     @ParameterizedTest
     @MethodSource("exceptionTestArgs")
-    public void exceptionTest(String cmdName,
-                              Class<? extends Throwable> exceptionClass)
-    {
+    void exceptionTest(String cmdName, Class<? extends Throwable> exceptionClass) {
         Assertions.assertThrows(exceptionClass,
                                 () -> cmdCreator.create(cmdName));
     }

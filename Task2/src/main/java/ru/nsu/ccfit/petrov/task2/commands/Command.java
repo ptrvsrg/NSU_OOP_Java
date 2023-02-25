@@ -15,5 +15,5 @@ public interface Command
      * @param args    command arguments
      * @param context calculator context
      */
-    void run(List <String> args, Context context);
+    void run(List<String> args, Context context);
 }

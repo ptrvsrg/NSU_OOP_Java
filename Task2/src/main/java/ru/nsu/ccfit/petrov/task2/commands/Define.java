@@ -12,8 +12,7 @@ public class Define
         implements Command
 {
     @Override
-    public void run(List<String> args, Context context)
-    {
+    public void run(List<String> args, Context context) {
         // Check args count
         if (args.size() != 2)
             throw new ArgumentsNumberException();

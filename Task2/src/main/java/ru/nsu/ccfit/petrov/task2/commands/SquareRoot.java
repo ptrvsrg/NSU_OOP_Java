@@ -13,8 +13,7 @@ public class SquareRoot
         implements Command
 {
     @Override
-    public void run(List <String> args, Context context)
-    {
+    public void run(List<String> args, Context context) {
         // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();
@@ -22,8 +21,7 @@ public class SquareRoot
         // Get element from stack
         Double numSquare = context.popStackValue();
 
-        if (numSquare < 0)
-        {
+        if (numSquare < 0) {
             // Push numSquare onto stack
             context.pushStackValue(numSquare);
             throw new NegativeNumberException();

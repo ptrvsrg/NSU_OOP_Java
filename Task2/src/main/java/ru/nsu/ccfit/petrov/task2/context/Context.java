@@ -5,7 +5,6 @@ import ru.nsu.ccfit.petrov.task2.context.exception.EmptyStackException;
 import ru.nsu.ccfit.petrov.task2.context.exception.VariableNameException;
 import ru.nsu.ccfit.petrov.task2.context.exception.VariableOverwritingException;
 
-import java.io.Closeable;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
@@ -17,7 +16,6 @@ import java.util.regex.Pattern;
  * Class {@code Context} contains calculator context (its variables, stack content and output stream for printing results)
  */
 public class Context
-    implements Closeable
 {
     private final Stack<Double> values;
     private final HashMap<String, Double> variables;
@@ -28,8 +26,7 @@ public class Context
      *
      * @param out Output stream for printing results
      */
-    public Context(OutputStream out)
-    {
+    public Context(OutputStream out) {
         values = new Stack<>();
         variables = new HashMap<>();
         this.out = new PrintStream(out);
@@ -38,8 +35,7 @@ public class Context
     /**
      * Print object {@code obj} and terminate line in output stream {@code out}
      */
-    public void println(Object obj)
-    {
+    public void println(Object obj) {
         out.println(obj);
     }
 
@@ -49,15 +45,12 @@ public class Context
      * @param value value pushed onto stack
      * @throws ArgumentsFormatException value is {@code null} or type value is not {@code Double}
      */
-    public void pushStackValue(Object value)
-    {
-        try
-        {
+    public void pushStackValue(Object value) {
+        try {
             values.push(Double.valueOf(value.toString()));
         }
         catch (NumberFormatException |
-               NullPointerException ex)
-        {
+               NullPointerException ex) {
             throw new ArgumentsFormatException();
         }
     }
@@ -68,14 +61,11 @@ public class Context
      * @return value at top of stack
      * @throws EmptyStackException stack is empty
      */
-    public Double peekStackValue()
-    {
-        try
-        {
+    public Double peekStackValue() {
+        try {
             return values.peek();
         }
-        catch (java.util.EmptyStackException ex)
-        {
+        catch (java.util.EmptyStackException ex) {
             throw new EmptyStackException();
         }
     }
@@ -86,14 +76,11 @@ public class Context
      * @return value at top of stack
      * @throws EmptyStackException stack is empty
      */
-    public Double popStackValue()
-    {
-        try
-        {
+    public Double popStackValue() {
+        try {
             return values.pop();
         }
-        catch (java.util.EmptyStackException ex)
-        {
+        catch (java.util.EmptyStackException ex) {
             throw new EmptyStackException();
         }
     }
@@ -104,8 +91,7 @@ public class Context
      * @param name potential variable name
      * @return {@code true} if variable name {@code name} is correct, otherwise {@code false}
      */
-    public boolean isCorrectVariableName(String name)
-    {
+    public boolean isCorrectVariableName(String name) {
         Pattern namePattern = Pattern.compile("^[a-zA-Z]\\w*$");
         Matcher matcher = namePattern.matcher(name);
         return matcher.matches();
@@ -116,26 +102,23 @@ public class Context
      *
      * @param name  variable name
      * @param value variable value
-     * @throws VariableNameException variable name is null or incorrect
+     * @throws VariableNameException        variable name is null or incorrect
      * @throws VariableOverwritingException overwriting variable
-     * @throws ArgumentsFormatException variable value is null or variable value type is not {@code Double}
+     * @throws ArgumentsFormatException     variable value is null or variable value type is not {@code Double}
      */
-    public void addVariable(Object name, Object value)
-    {
+    public void addVariable(Object name, Object value) {
         if (name == null || !isCorrectVariableName(name.toString()))
             throw new VariableNameException();
 
         if (variables.containsKey(name.toString()))
             throw new VariableOverwritingException();
 
-        try
-        {
+        try {
             variables.put(name.toString(),
                           Double.valueOf(value.toString()));
         }
         catch (NumberFormatException |
-               NullPointerException ex)
-        {
+               NullPointerException ex) {
             throw new ArgumentsFormatException();
         }
     }
@@ -146,14 +129,7 @@ public class Context
      * @param name variable name
      * @return value of variable with name {@code name} or {@code null} if variable with name {@code name} is not found
      */
-    public Double getVariable(String name)
-    {
+    public Double getVariable(String name) {
         return variables.get(name);
-    }
-
-    @Override
-    public void close()
-    {
-        out.close();
     }
 }

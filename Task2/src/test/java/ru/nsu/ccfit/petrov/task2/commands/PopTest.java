@@ -15,19 +15,19 @@ class PopTest
     private final Pop popCmd = new Pop();
 
     @Test
-    void popTest()
-    {
+    void popTest() {
         context.pushStackValue(1.1);
         context.pushStackValue(2.2);
-        Assertions.assertDoesNotThrow(() -> popCmd.run(new ArrayList<>(), context));
+        Assertions.assertDoesNotThrow(() -> popCmd.run(new ArrayList<>(),
+                                                       context));
         Assertions.assertEquals(1.1,
                                 context.popStackValue());
     }
 
     @Test
-    void exceptionTest()
-    {
+    void exceptionTest() {
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () -> popCmd.run(new ArrayList<>(List.of("a")), context));
+                                () -> popCmd.run(new ArrayList<>(List.of("a")),
+                                                 context));
     }
 }

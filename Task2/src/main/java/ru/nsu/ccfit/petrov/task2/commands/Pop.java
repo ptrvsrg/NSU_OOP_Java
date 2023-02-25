@@ -9,11 +9,10 @@ import java.util.List;
  * Class {@code Pop} implements command to pop values from stack of calculator context
  */
 public class Pop
-    implements Command
+        implements Command
 {
     @Override
-    public void run(List <String> args, Context context)
-    {
+    public void run(List<String> args, Context context) {
         // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();

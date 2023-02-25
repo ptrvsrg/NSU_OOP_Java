@@ -11,11 +11,10 @@ import java.util.List;
  * Class {@code Division} implements division operation
  */
 public class Division
-    implements Command
+        implements Command
 {
     @Override
-    public void run(List <String> args, Context context)
-    {
+    public void run(List<String> args, Context context) {
         // Check args count
         if (!args.isEmpty())
             throw new ArgumentsNumberException();
@@ -24,8 +23,7 @@ public class Division
         Double divisor = context.popStackValue();
 
         // Check division by zero
-        if (Math.abs(divisor) < 1.0E-09)
-        {
+        if (Math.abs(divisor) < 1.0E-09) {
             // Push divisor onto stack
             context.pushStackValue(divisor);
             throw new DivisionByZeroException();
@@ -33,12 +31,10 @@ public class Division
 
         // Pop dividend from stack
         Double dividend;
-        try
-        {
+        try {
             dividend = context.popStackValue();
         }
-        catch (EmptyStackException ex)
-        {
+        catch (EmptyStackException ex) {
             // Push divisor onto stack
             context.pushStackValue(divisor);
             throw ex;

@@ -19,41 +19,44 @@ class AdditionTest
     private final Context context = new Context(System.out);
     private final Addition additionCmd = new Addition();
 
-    private static Stream <Arguments> additionTestArgs()
-    {
-        return Stream.of(
-                Arguments.of(1.23, 23.54),
-                Arguments.of(1.23, -23.54),
-                Arguments.of(-1.23, 23.54),
-                Arguments.of(-1.23, -23.54)
-        );
+    private static Stream<Arguments> additionTestArgs() {
+        return Stream.of(Arguments.of(1.23,
+                                      23.54),
+                         Arguments.of(1.23,
+                                      -23.54),
+                         Arguments.of(-1.23,
+                                      23.54),
+                         Arguments.of(-1.23,
+                                      -23.54));
     }
 
     @ParameterizedTest
     @MethodSource("additionTestArgs")
-    void additionTest(Double addend1, Double addend2)
-    {
+    void additionTest(Double addend1, Double addend2) {
         context.pushStackValue(addend1);
         context.pushStackValue(addend2);
-        Assertions.assertDoesNotThrow(() -> additionCmd.run(new ArrayList<>(), context));
+        Assertions.assertDoesNotThrow(() -> additionCmd.run(new ArrayList<>(),
+                                                            context));
         Assertions.assertEquals(addend1 + addend2,
                                 context.popStackValue());
     }
 
     @Test
-    void exceptionTest()
-    {
+    void exceptionTest() {
         Assertions.assertThrows(ArgumentsNumberException.class,
-                                () -> additionCmd.run(new ArrayList<>(List.of("1.34")), context));
+                                () -> additionCmd.run(new ArrayList<>(List.of("1.34")),
+                                                      context));
 
         Assertions.assertThrows(EmptyStackException.class,
-                                () -> additionCmd.run(new ArrayList<>(), context));
+                                () -> additionCmd.run(new ArrayList<>(),
+                                                      context));
 
         context.pushStackValue(12.23);
         Assertions.assertThrows(EmptyStackException.class,
-                                () -> additionCmd.run(new ArrayList<>(), context));
-        Assertions.assertEquals(context.popStackValue(),
-                                12.23);
+                                () -> additionCmd.run(new ArrayList<>(),
+                                                      context));
+        Assertions.assertEquals(12.23,
+                                context.popStackValue());
         Assertions.assertThrows(EmptyStackException.class,
                                 context::popStackValue);
     }
